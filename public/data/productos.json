@@ -88,5 +88,41 @@
     "stock": 3,
     "imagen": "/images/Intellivision.png",
     "descripcion": ""
+  },
+  {
+    "id": 11,
+    "nombre": "Joystick Atari",
+    "categoria": "accesorios",
+    "precio": 8000,
+    "stock": 20,
+    "imagen": "/images/JoystickAtari.png",
+    "descripcion": ""
+  },
+  {
+    "id": 12,
+    "nombre": "Joystick Coleco",
+    "categoria": "accesorios",
+    "precio": 9000,
+    "stock": 15,
+    "imagen": "/images/JoystickColeco.png",
+    "descripcion": ""
+  },
+  {
+    "id": 13,
+    "nombre": "Joystick Family",
+    "categoria": "accesorios",
+    "precio": 7500,
+    "stock": 18,
+    "imagen": "/images/Joystickfamily.png",
+    "descripcion": ""
+  },
+  {
+    "id": 14,
+    "nombre": "Joystick Intellivision",
+    "categoria": "accesorios",
+    "precio": 8500,
+    "stock": 12,
+    "imagen": "/images/JoystickIntelliVision.png",
+    "descripcion": ""
   }
 ]
