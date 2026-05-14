@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "nombre": "Alien Blaster X",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 10,
+    "imagen": "/images/AlienBlaster.png",
+    "descripcion": "Defiende la galaxia en este clásico shooter espacial. Pilota tu nave pixelada y dispara rayos láser contra hordas de alienígenas invasores bajo un cielo estrellado. Acción frenética, enemigos desafiantes y pura nostalgia arcade en cada partida."
+  },
+  {
+    "id": 2,
+    "nombre": "Banana Kong",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 10,
+    "imagen": "/images/BananaKong.png",
+    "descripcion": "Acompañá al simpático mono en su aventura pixelada por la jungla. Saltá entre palmeras, recolectá bananas y esquivá obstáculos en un mundo colorido y lleno de energía arcade. Diversión asegurada con un toque nostálgico que revive la magia de los clásicos de plataformas."
+  },
+  {
+    "id": 3,
+    "nombre": "Cyber Samurai",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 10,
+    "imagen": "/images/CyberSamurai.png",
+    "descripcion": "Enfrentá el futuro con espada en mano. Convertite en un guerrero cibernético que protege la ciudad iluminada por neones, combatiendo enemigos con precisión y poder en un mundo de estética cyberpunk."
+  },
+  {
+    "id": 4,
+    "nombre": "Dungeon Explorer",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 10,
+    "imagen": "/images/DungeonExplorer.png",
+    "descripcion": "Aventurate en las profundidades de un oscuro calabozo junto a un valiente caballero y un poderoso mago. Enfrentá criaturas peligrosas, descubrí pasajes ocultos y combiná habilidades para superar cada desafío en este mundo de fantasía pixelada."
+  },
+  {
+    "id": 5,
+    "nombre": "Pixel Quest",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 10,
+    "imagen": "/images/PixelQuest.png",
+    "descripcion": "Tomá tu espada y explorá un reino lleno de castillos, enemigos y secretos ocultos. Guiá al héroe vestido de verde en su misión por defender la tierra y conquistar cada desafío que se cruce en su camino."
+  },
+  {
+    "id": 6,
+    "nombre": "Turbo Racer 88",
+    "categoria": "juegos",
+    "precio": 22000,
+    "stock": 12,
+    "imagen": "/images/TurboRacer.png",
+    "descripcion": "Sentí la velocidad pura del clásico arcade de carreras. Conduzí tu deportivo rojo por autopistas pixeladas bajo luces de neón, esquivando rivales y buscando el récord definitivo. Un homenaje a los juegos de conducción de los 80, lleno de adrenalina y nostalgia."
+  },
+  {
+    "id": 7,
+    "nombre": "Atari 2600",
+    "categoria": "consolas",
+    "precio": 45000,
+    "stock": 5,
+    "imagen": "/images/Atari2600.png",
+    "descripcion": ""
+  },
+  {
+    "id": 8,
+    "nombre": "ColecoVision",
+    "categoria": "consolas",
+    "precio": 55000,
+    "stock": 4,
+    "imagen": "/images/ColecoVision.png",
+    "descripcion": ""
+  },
+  {
+    "id": 9,
+    "nombre": "Family Game",
+    "categoria": "consolas",
+    "precio": 35000,
+    "stock": 8,
+    "imagen": "/images/FamilyGame.png",
+    "descripcion": ""
+  },
+  {
+    "id": 10,
+    "nombre": "Intellivision",
+    "categoria": "consolas",
+    "precio": 50000,
+    "stock": 3,
+    "imagen": "/images/Intellivision.png",
+    "descripcion": ""
+  }
+]

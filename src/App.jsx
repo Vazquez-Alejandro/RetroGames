@@ -1,16 +1,18 @@
 import './App.css'
-import { Footer } from './components/Footer/Footer'
-import { Header } from './components/Header/Header'
+import { Layout } from './components/Layout/Layout'
+import { ItemListContainer } from './components/ItemListContainer/ItemListContainer'
+import { FormularioContainer } from './components/FormularioContainer/FormularioContainer'
 
 function App() {
   return (
-    <> 
-      <Header />
-      <main>
-        <h1>Retro Games</h1>
-      </main>
-      <Footer />
-    </>
+    <div className="app">
+      <Layout>
+        <h1 className="main-title">Retro Games</h1>
+        <p className="main-subtitle">Los mejores juegos, consolas y accesorios retro</p>
+        <ItemListContainer Mensaje="Nuestros productos destacados" />
+        <FormularioContainer />
+      </Layout>
+    </div>
   )
 }
 

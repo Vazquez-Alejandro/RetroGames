@@ -1,0 +1,27 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  font-size: 12px;
+  padding: 4px 10px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 var(--accent);
+}
+
+.quantity {
+  font-size: 12px;
+  color: var(--warning);
+  min-width: 24px;
+  text-align: center;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}

@@ -1,0 +1,29 @@
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+.navItem {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  color: var(--text);
+  position: relative;
+}
+
+.navItem:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 var(--accent);
+  transform: translate(-2px, -2px);
+}
+
+.navItem:active {
+  box-shadow: 2px 2px 0 var(--accent);
+  transform: translate(-1px, -1px);
+}
