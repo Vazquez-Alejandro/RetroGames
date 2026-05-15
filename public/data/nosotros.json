@@ -4,20 +4,20 @@
     "nombre": "Alejandro",
     "puesto": "Desarrollador Full Stack",
     "email": "alejandro@retrogames.com",
-    "imagen": "/images/logo.png"
+    "imagen": "/images/Maniac_Mansion_-_Tentaculo_Verde.png"
   },
   {
     "id": 2,
     "nombre": "María García",
     "puesto": "Diseñadora UX/UI",
     "email": "maria@retrogames.com",
-    "imagen": "/images/logo.png"
+    "imagen": "/images/Maniac_Mansion_-_Edna.png"
   },
   {
     "id": 3,
     "nombre": "Carlos López",
     "puesto": "Project Manager",
     "email": "carlos@retrogames.com",
-    "imagen": "/images/logo.png"
+    "imagen": "/images/Maniac_Mansion_-_Ted.png"
   }
 ]

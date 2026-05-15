@@ -39,6 +39,10 @@
   transform: scale(1.05);
 }
 
+.logo {
+  mix-blend-mode: screen;
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;

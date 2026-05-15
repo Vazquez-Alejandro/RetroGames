@@ -41,11 +41,11 @@
 }
 
 .teamImg {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   image-rendering: pixelated;
-  border: 1px solid var(--text-dim);
+  border: 2px solid var(--text-dim);
   padding: 4px;
   background: var(--bg-dark);
 }
