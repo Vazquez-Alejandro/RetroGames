@@ -37,11 +37,12 @@
   padding: 12px;
   border: 1px solid var(--text-dim);
   background: var(--bg-card);
+  flex: 1;
   min-width: 140px;
+  max-width: 180px;
 }
 
 .teamImg {
-  width: 80px;
   height: 80px;
   object-fit: contain;
   image-rendering: pixelated;
