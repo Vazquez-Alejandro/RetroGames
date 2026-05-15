@@ -1,0 +1,133 @@
+.hero {
+  text-align: center;
+  padding: 48px 16px 32px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 40px;
+}
+
+.welcome {
+  font-size: 14px;
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.title {
+  font-size: 24px;
+  color: var(--warning);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-shadow: 3px 3px 0 rgba(255, 215, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.1);
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.ctaLink {
+  display: inline-block;
+  font-size: 10px;
+  padding: 12px 24px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.ctaLink:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+  box-shadow: var(--shadow);
+}
+
+.sectionTitle {
+  font-size: 14px;
+  color: var(--warning);
+  text-align: center;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 2px solid var(--text-dim);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+  min-height: 400px;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 8px 8px 0 rgba(255, 107, 53, 0.2);
+  transform: translate(-4px, -4px);
+}
+
+.cardImage {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: var(--bg-dark);
+  border: 2px solid var(--text-dim);
+  image-rendering: pixelated;
+  padding: 8px;
+}
+
+.card:hover .cardImage {
+  border-color: var(--accent);
+}
+
+.cardName {
+  font-size: 10px;
+  color: var(--warning);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.cardDescription {
+  font-size: 8px;
+  color: var(--text-dim);
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cardPrice {
+  font-size: 14px;
+  color: var(--success);
+  margin: 0;
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
+  margin-top: auto;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-dim);
+}
+
+.error {
+  text-align: center;
+  padding: 48px;
+  color: var(--danger);
+}
