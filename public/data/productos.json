@@ -60,7 +60,7 @@
     "precio": 45000,
     "stock": 5,
     "imagen": "/images/Atari2600.png",
-    "descripcion": ""
+    "descripcion": "La consola que empezó todo. CPU de 8 bits, más de 30 millones de unidades vendidas y un catálogo legendario que definió la edad de oro del videojuego."
   },
   {
     "id": 8,
@@ -69,7 +69,7 @@
     "precio": 55000,
     "stock": 4,
     "imagen": "/images/ColecoVision.png",
-    "descripcion": ""
+    "descripcion": "Potente consola de 8 bits con gráficos superiores a su competencia. Controlador con teclado numérico y ranura para expansión que la hicieron única en su época."
   },
   {
     "id": 9,
@@ -78,7 +78,7 @@
     "precio": 35000,
     "stock": 8,
     "imagen": "/images/FamilyGame.png",
-    "descripcion": ""
+    "descripcion": "El clásico sistema de 8 bits que definió la infancia de millones. Gráficos pixelados, sonido chip y una biblioteca de juegos que marcaron generaciones."
   },
   {
     "id": 10,
@@ -87,7 +87,7 @@
     "precio": 50000,
     "stock": 3,
     "imagen": "/images/Intellivision.png",
-    "descripcion": ""
+    "descripcion": "Consola de 16 bits con innovador controlador de disco giratorio y teclado numérico. Pionera en gráficos avanzados y sonido sintetizado para su época."
   },
   {
     "id": 11,
@@ -96,7 +96,7 @@
     "precio": 8000,
     "stock": 20,
     "imagen": "/images/JoystickAtari.png",
-    "descripcion": ""
+    "descripcion": "Palanca clásica de una pieza con botón de fuego lateral. Diseño robusto y respuesta mecánica. El joystick más reconocido de la historia de los videojuegos."
   },
   {
     "id": 12,
@@ -105,7 +105,7 @@
     "precio": 9000,
     "stock": 15,
     "imagen": "/images/JoystickColeco.png",
-    "descripcion": ""
+    "descripcion": "Controlador ergonómico con palanca central y teclado numérico. Incluye rueda lateral para manejo preciso en juegos deportivos y de conducción."
   },
   {
     "id": 13,
@@ -114,7 +114,7 @@
     "precio": 7500,
     "stock": 18,
     "imagen": "/images/Joystickfamily.png",
-    "descripcion": ""
+    "descripcion": "Joystick compacto de 8 direcciones con dos botones de acción. Réplica fiel del diseño original, ideal para plataformas y juegos de acción."
   },
   {
     "id": 14,
@@ -123,6 +123,6 @@
     "precio": 8500,
     "stock": 12,
     "imagen": "/images/JoystickIntelliVision.png",
-    "descripcion": ""
+    "descripcion": "Innovador controlador con disco direccional circular y teclado de membrana. Ofrece precisión única para juegos de simulación, deportes y estrategia."
   }
 ]
