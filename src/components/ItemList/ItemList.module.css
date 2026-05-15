@@ -9,6 +9,7 @@
   text-decoration: none;
   color: inherit;
   animation: fadeIn 0.4s ease-out both;
+  display: flex;
 }
 
 .link:nth-child(1) { animation-delay: 0.05s; }
