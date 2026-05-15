@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useCart } from '../../context/CartContext'
 import { Count } from '../Count/Count'
 import styles from './Item.module.css'
 
-export function Item({ nombre, precio, stock, imagen, descripcion }) {
+export function Item({ id, nombre, precio, stock, imagen, descripcion }) {
   const [cantidad, setCantidad] = useState(0)
   const [esFavorito, setEsFavorito] = useState(false)
+  const { addToCart } = useCart()
 
   const incrementar = () => {
     if (cantidad < stock) {
@@ -18,13 +20,18 @@ export function Item({ nombre, precio, stock, imagen, descripcion }) {
     }
   }
 
-  const agregarAlCarrito = () => {
+  const agregarAlCarrito = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
     if (cantidad > 0) {
+      addToCart({ id, nombre, precio, stock, imagen }, cantidad)
       alert(`Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito`)
     }
   }
 
-  const marcarComoFavorito = () => {
+  const marcarComoFavorito = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
     setEsFavorito(!esFavorito)
   }
 
