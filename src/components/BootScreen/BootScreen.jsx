@@ -49,20 +49,13 @@ export function BootScreen({ onFinish }) {
     <div className={styles.overlay} onClick={handleStart}>
       <div className={styles.crt}>
         <div className={styles.screen}>
-          <pre className={styles.ascii}>{`
-  ██████  ███████ ████████ ██████   ██████
-  ██   ██ ██         ██    ██   ██ ██
-  ██████  █████      ██    ██████  ██   ██
-  ██   ██ ██         ██    ██   ██ ██   ██
-  ██   ██ ███████    ██    ██   ██  ██████
-          `}</pre>
-          <pre className={styles.asciiSub}>{`
-   ██████   █████  ███    ███ ███████
-  ██       ██   ██ ████  ████ ██
-  ██   ███ ███████ ██ ████ ██ █████
-  ██    ██ ██   ██ ██  ██  ██ ██
-   ██████  ██   ██ ██      ██ ███████
-          `}</pre>
+          <pre className={styles.ascii}>{String.raw`  _____  ______ _______ _____   ____     _____          __  __ ______  _____
+ |  __ \|  ____|__   __|  __ \ / __ \   / ____|   /\   |  \/  |  ____|/ ____|
+ | |__) | |__     | |  | |__) | |  | | | |  __   /  \  | \  / | |__  | (___
+ |  _  /|  __|    | |  |  _  /| |  | | | | |_ | / /\ \ | |\/| |  __|  \___ \
+ | | \ \| |____   | |  | | \ \| |__| | | |__| |/ ____ \| |  | | |____ ____) |
+ |_|  \_\______|  |_|  |_|  \_\\____/   \_____/_/    \_\_|  |_|______|_____/
+`}</pre>
 
           <div className={styles.steps}>
             {bootSteps.slice(0, visibleSteps).map((step, i) => (

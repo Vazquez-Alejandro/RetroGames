@@ -30,21 +30,11 @@
 
 .ascii {
   color: #39ff14;
-  font-size: 8px;
-  line-height: 1.2;
+  font-size: 9px;
+  line-height: 1.15;
   text-align: center;
   margin: 0;
   text-shadow: 0 0 6px rgba(57, 255, 20, 0.5);
-}
-
-.asciiSub {
-  color: #39ff14;
-  font-size: 6px;
-  line-height: 1.2;
-  text-align: center;
-  margin: 0 0 16px;
-  opacity: 0.7;
-  text-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
 }
 
 .steps {
