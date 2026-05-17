@@ -48,6 +48,7 @@ body {
   flex-direction: column;
   box-sizing: border-box;
   box-shadow: var(--shadow);
+  animation: glow 3s ease-in-out infinite;
 }
 
 h1, h2, h3, h4 {
