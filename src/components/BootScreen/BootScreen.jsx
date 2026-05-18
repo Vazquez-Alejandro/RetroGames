@@ -149,21 +149,24 @@ export function BootScreen({ onFinish }) {
     }
   }, [])
 
-  const handleStart = () => {
-    if (showPressStart) onFinish()
-  }
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [])
 
   return (
-    <div className={styles.overlay} onClick={handleStart}>
+    <div className={styles.overlay}>
       <canvas ref={canvasRef} className={styles.pongCanvas} />
       <div className={styles.crt}>
         <div className={styles.screen}>
           <pre className={styles.ascii}>{String.raw`  _____  ______ _______ _____   ____     _____          __  __ ______  _____
- |  __ \|  ____|__   __|  __ \ / __ \   / ____|   /\   |  \/  |  ____|/ ____|
- | |__) | |__     | |  | |__) | |  | | | |  __   /  \  | \  / | |__  | (___
- |  _  /|  __|    | |  |  _  /| |  | | | | |_ | / /\ \ | |\/| |  __|  \___ \
- | | \ \| |____   | |  | | \ \| |__| | | |__| |/ ____ \| |  | | |____ ____) |
- |_|  \_\______|  |_|  |_|  \_\\____/   \_____/_/    \_\_|  |_|______|_____/
+  |  __ \|  ____|__   __|  __ \ / __ \   / ____|   /\   |  \/  |  ____|/ ____|
+  | |__) | |__     | |  | |__) | |  | | | |  __   /  \  | \  / | |__  | (___
+  |  _  /|  __|    | |  |  _  /| |  | | | | |_ | / /\ \ | |\/| |  __|  \___ \
+  | | \ \| |____   | |  | | \ \| |__| | | |__| |/ ____ \| |  | | |____ ____) |
+  |_|  \_\______|  |_|  |_|  \_\\____/   \_____/_/    \_\_|  |_|______|_____/
 `}</pre>
 
           <div className={styles.steps}>
@@ -182,7 +185,7 @@ export function BootScreen({ onFinish }) {
           </div>
 
           {showPressStart && (
-            <p className={styles.pressStart}>[ PRESS START ]</p>
+            <p className={styles.pressStart} onClick={onFinish}>[ PRESS START ]</p>
           )}
         </div>
       </div>
