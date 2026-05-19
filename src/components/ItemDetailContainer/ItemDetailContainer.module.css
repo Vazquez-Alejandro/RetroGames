@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.backLink {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  font-size: 10px;
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 2px solid var(--secondary);
+  transition: all 0.2s;
+}
+
+.backLink:hover {
+  background: var(--secondary);
+  color: var(--bg-dark);
+  box-shadow: var(--shadow-secondary);
+}
+
+.detailWrapper {
+  width: 100%;
+  max-width: 400px;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
+import styles from "./ItemDetailContainer.module.css";
 
 export const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -26,9 +27,12 @@ export const ItemDetailContainer = () => {
   if (!itemDetail) return <p>Producto no encontrado</p>;
 
   return (
-    <section>
+    <section className={styles.container}>
+      <Link to="/productos" className={styles.backLink}>
+        &larr; Volver a productos
+      </Link>
       <h1>Detalles del producto</h1>
-      <div className="products-container">
+      <div className={styles.detailWrapper}>
         <ItemDetail item={itemDetail} />
       </div>
     </section>

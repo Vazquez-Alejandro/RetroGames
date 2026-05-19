@@ -28,6 +28,14 @@
   opacity: 0.5;
 }
 
+.logo {
+  height: 40px;
+  width: auto;
+  image-rendering: pixelated;
+  mix-blend-mode: screen;
+  filter: brightness(1.5);
+}
+
 .logoContainer a {
   display: flex;
   align-items: center;
