@@ -1,23 +1,23 @@
 [
   {
     "id": 1,
-    "nombre": "Alejandro",
-    "puesto": "Desarrollador Full Stack",
+    "name": "Alejandro",
+    "role": "Desarrollador",
     "email": "alejandro@retrogames.com",
-    "imagen": "/images/Maniac_Mansion_-_Tentaculo_Verde.png"
+    "image": "/images/Maniac_Mansion_-_Tentaculo_Verde.png"
   },
   {
     "id": 2,
-    "nombre": "María García",
-    "puesto": "Diseñadora UX/UI",
+    "name": "María",
+    "role": "Diseñadora",
     "email": "maria@retrogames.com",
-    "imagen": "/images/Maniac_Mansion_-_Edna.png"
+    "image": "/images/Maniac_Mansion_-_Edna.png"
   },
   {
     "id": 3,
-    "nombre": "Carlos López",
-    "puesto": "Project Manager",
+    "name": "Carlos",
+    "role": "Marketing",
     "email": "carlos@retrogames.com",
-    "imagen": "/images/Maniac_Mansion_-_Ted.png"
+    "image": "/images/Maniac_Mansion_-_Ted.png"
   }
 ]

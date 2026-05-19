@@ -1,44 +1,69 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CartContext = createContext()
+const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  const [carrito, setCarrito] = useState([])
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart debe usarse dentro de un CartProvider");
+  }
+  return context;
+};
 
-  const addToCart = (producto, cantidad) => {
-    setCarrito(prev => {
-      const existente = prev.find(item => item.id === producto.id)
-      if (existente) {
-        return prev.map(item =>
-          item.id === producto.id
-            ? { ...item, cantidad: item.cantidad + cantidad }
-            : item
-        )
+export const CartProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const [cart, setCart] = useState([]);
+
+  const isInCart = (id) => {
+    return cart.some((item) => item.id === id);
+  };
+
+  const addItem = (item, quantity = 1) => {
+    setCart((prev) => {
+      const existing = prev.find((el) => el.id === item.id);
+      if (existing) {
+        return prev.map((el) =>
+          el.id === item.id
+            ? { ...el, quantity: el.quantity + quantity }
+            : el
+        );
       }
-      return [...prev, { ...producto, cantidad }]
-    })
-  }
+      return [...prev, { ...item, quantity }];
+    });
+  };
 
-  const removeFromCart = (id) => {
-    setCarrito(prev => prev.filter(item => item.id !== id))
-  }
+  const removeItem = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  };
 
   const clearCart = () => {
-    setCarrito([])
-  }
+    setCart([]);
+  };
 
-  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0)
-  const totalPrecio = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0)
+  const getTotalItems = () => {
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
+  };
 
-  return (
-    <CartContext.Provider value={{ carrito, addToCart, removeFromCart, clearCart, totalItems, totalPrecio }}>
-      {children}
-    </CartContext.Provider>
-  )
-}
+  const getCartTotal = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  };
 
-export function useCart() {
-  const context = useContext(CartContext)
-  if (!context) throw new Error('useCart debe usarse dentro de CartProvider')
-  return context
-}
+  const checkout = () => {
+    alert("Su compra ha sido realizada");
+    clearCart();
+    navigate("/");
+  };
+
+  const values = {
+    cart,
+    addItem,
+    removeItem,
+    getTotalItems,
+    getCartTotal,
+    clearCart,
+    checkout,
+  };
+
+  return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
+};

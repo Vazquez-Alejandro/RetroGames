@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Alien Blaster X",
+    "category": "juegos",
+    "description": "Defiende la galaxia en este clásico shooter espacial. Pilota tu nave pixelada y dispara rayos láser contra hordas de alienígenas invasores bajo un cielo estrellado. Acción frenética, enemigos desafiantes y pura nostalgia arcade en cada partida.",
+    "price": 25000,
+    "stock": 10,
+    "image": "/images/AlienBlaster.png"
+  },
+  {
+    "id": 2,
+    "name": "Banana Kong",
+    "category": "juegos",
+    "description": "Acompañá al simpático mono en su aventura pixelada por la jungla. Saltá entre palmeras, recolectá bananas y esquivá obstáculos en un mundo colorido y lleno de energía arcade.",
+    "price": 18000,
+    "stock": 10,
+    "image": "/images/BananaKong.png"
+  },
+  {
+    "id": 3,
+    "name": "Cyber Samurai",
+    "category": "juegos",
+    "description": "Enfrentá el futuro con espada en mano. Convertite en un guerrero cibernético que protege la ciudad iluminada por neones, combatiendo enemigos con precisión y poder en un mundo de estética cyberpunk.",
+    "price": 28000,
+    "stock": 10,
+    "image": "/images/CyberSamurai.png"
+  },
+  {
+    "id": 4,
+    "name": "Dungeon Explorer",
+    "category": "juegos",
+    "description": "Aventurate en las profundidades de un oscuro calabozo junto a un valiente caballero y un poderoso mago. Enfrentá criaturas peligrosas, descubrí pasajes ocultos y combiná habilidades.",
+    "price": 20000,
+    "stock": 10,
+    "image": "/images/DungeonExplorer.png"
+  },
+  {
+    "id": 5,
+    "name": "Pixel Quest",
+    "category": "juegos",
+    "description": "Tomá tu espada y explorá un reino lleno de castillos, enemigos y secretos ocultos. Guiá al héroe en su misión por defender la tierra.",
+    "price": 22000,
+    "stock": 10,
+    "image": "/images/PixelQuest.png"
+  },
+  {
+    "id": 6,
+    "name": "Turbo Racer 88",
+    "category": "juegos",
+    "description": "Sentí la velocidad pura del clásico arcade de carreras. Conduzí tu deportivo rojo por autopistas pixeladas bajo luces de neón.",
+    "price": 24000,
+    "stock": 12,
+    "image": "/images/TurboRacer.png"
+  },
+  {
+    "id": 7,
+    "name": "Atari 2600",
+    "category": "consolas",
+    "description": "La consola que empezó todo. CPU de 8 bits, más de 30 millones de unidades vendidas y un catálogo legendario.",
+    "price": 45000,
+    "stock": 5,
+    "image": "/images/Atari2600.png"
+  },
+  {
+    "id": 8,
+    "name": "ColecoVision",
+    "category": "consolas",
+    "description": "Potente consola de 8 bits con gráficos superiores a su competencia. Controlador con teclado numérico y ranura para expansión.",
+    "price": 55000,
+    "stock": 4,
+    "image": "/images/ColecoVision.png"
+  },
+  {
+    "id": 9,
+    "name": "Family Game",
+    "category": "consolas",
+    "description": "El clásico sistema de 8 bits que definió la infancia de millones. Gráficos pixelados y una biblioteca de juegos que marcaron generaciones.",
+    "price": 35000,
+    "stock": 8,
+    "image": "/images/FamilyGame.png"
+  },
+  {
+    "id": 10,
+    "name": "Intellivision",
+    "category": "consolas",
+    "description": "Consola de 16 bits con innovador controlador de disco giratorio y teclado numérico. Pionera en gráficos avanzados.",
+    "price": 50000,
+    "stock": 3,
+    "image": "/images/Intellivision.png"
+  },
+  {
+    "id": 11,
+    "name": "Joystick Atari",
+    "category": "accesorios",
+    "description": "Palanca clásica de una pieza con botón de fuego lateral. Diseño robusto y respuesta mecánica.",
+    "price": 8000,
+    "stock": 20,
+    "image": "/images/JoystickAtari.png"
+  },
+  {
+    "id": 12,
+    "name": "Joystick Coleco",
+    "category": "accesorios",
+    "description": "Controlador ergonómico con palanca central y teclado numérico. Incluye rueda lateral para manejo preciso.",
+    "price": 9000,
+    "stock": 15,
+    "image": "/images/JoystickColeco.png"
+  },
+  {
+    "id": 13,
+    "name": "Joystick Family",
+    "category": "accesorios",
+    "description": "Joystick compacto de 8 direcciones con dos botones de acción. Réplica fiel del diseño original.",
+    "price": 7500,
+    "stock": 18,
+    "image": "/images/Joystickfamily.png"
+  },
+  {
+    "id": 14,
+    "name": "Joystick Intellivision",
+    "category": "accesorios",
+    "description": "Innovador controlador con disco direccional circular y teclado de membrana. Ofrece precisión única.",
+    "price": 8500,
+    "stock": 12,
+    "image": "/images/JoystickIntelliVision.png"
+  }
+]

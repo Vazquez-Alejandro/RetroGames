@@ -28,19 +28,23 @@
   opacity: 0.5;
 }
 
-.logo {
-  height: 48px;
-  width: auto;
-  transition: all 0.2s;
+.logoContainer a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
 
-.logo:hover {
+.logoText {
+  font-size: 18px;
+  color: var(--warning);
+  text-shadow: 3px 3px 0 rgba(255, 215, 0, 0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.logoText:hover {
   filter: drop-shadow(0 0 12px var(--accent)) brightness(1.2);
-  transform: scale(1.05);
-}
-
-.logo {
-  mix-blend-mode: screen;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,13 @@
+.cartContainer {
+  padding: 20px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: #eaeaea;
+  border-radius: 8px;
+  text-decoration: none;
+}

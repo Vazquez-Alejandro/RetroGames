@@ -51,6 +51,11 @@ body {
   animation: glow 3s ease-in-out infinite;
 }
 
+main {
+  flex: 1;
+  padding: 32px 16px;
+}
+
 h1, h2, h3, h4 {
   font-family: var(--pixel-font);
   color: var(--warning);
@@ -173,11 +178,6 @@ body::after {
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
 }
 
 @keyframes glow {

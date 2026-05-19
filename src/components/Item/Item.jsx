@@ -1,56 +1,59 @@
-import { useState } from 'react'
-import { useCart } from '../../context/CartContext'
-import { Count } from '../Count/Count'
-import styles from './Item.module.css'
+import { useState } from "react";
+import { useCart } from "../../context/CartContext";
+import { Count } from "../Count/Count";
+import styles from "./Item.module.css";
 
-export function Item({ id, nombre, precio, stock, imagen, descripcion }) {
-  const [cantidad, setCantidad] = useState(0)
-  const [esFavorito, setEsFavorito] = useState(false)
-  const { addToCart } = useCart()
+export const Item = ({ id, name, description, price, image, children, stock }) => {
+  const [count, setCount] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const { addItem } = useCart();
 
-  const incrementar = () => {
-    if (cantidad < stock) {
-      setCantidad(cantidad + 1)
+  const increment = () => {
+    if (count < stock) setCount(count + 1);
+  };
+
+  const decrement = () => {
+    if (count > 0) setCount(count - 1);
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (count > 0) {
+      addItem({ id, name, price, image }, count);
+      alert(`Agregaste ${count} unidad(es) de "${name}" al carrito`);
+      setCount(0);
     }
-  }
+  };
 
-  const decrementar = () => {
-    if (cantidad > 0) {
-      setCantidad(cantidad - 1)
-    }
-  }
-
-  const agregarAlCarrito = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    if (cantidad > 0) {
-      addToCart({ id, nombre, precio, stock, imagen }, cantidad)
-      alert(`Agregaste ${cantidad} unidad(es) de "${nombre}" al carrito`)
-    }
-  }
-
-  const marcarComoFavorito = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    setEsFavorito(!esFavorito)
-  }
+  const handleFavorite = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <div className={styles.card}>
-      <img src={imagen} alt={nombre} className={styles.image} />
-      <h3 className={styles.name}>{nombre}</h3>
-      {descripcion && <p className={styles.description}>{descripcion}</p>}
-      <p className={styles.price}>$ {precio.toLocaleString('es-AR')}</p>
-      <p className={styles.stock}>Stock: {stock} unidad(es)</p>
-      <Count cantidad={cantidad} incrementar={incrementar} decrementar={decrementar} />
-      <div className={styles.actions}>
-        <button className={styles.addBtn} onClick={agregarAlCarrito}>
-          Agregar al carrito
-        </button>
-        <span className={styles.favoriteBtn} onClick={marcarComoFavorito}>
-          {esFavorito ? '⭐' : '☆'}
-        </span>
-      </div>
+      <img src={image} alt={name} className={styles.image} />
+      <h3 className={styles.name}>{name}</h3>
+      {description && <p className={styles.description}>{description}</p>}
+      <p className={styles.price}>$ {price.toLocaleString("es-AR")}</p>
+      {stock && <p className={styles.stock}>Stock: {stock} unidad(es)</p>}
+      {children ? (
+        children
+      ) : (
+        <>
+          <Count count={count} increment={increment} decrement={decrement} />
+          <div className={styles.actions}>
+            <button className={styles.addBtn} onClick={handleAddToCart}>
+              Agregar al carrito
+            </button>
+            <span className={styles.favoriteBtn} onClick={handleFavorite}>
+              {isFavorite ? "⭐" : "☆"}
+            </span>
+          </div>
+        </>
+      )}
     </div>
-  )
-}
+  );
+};

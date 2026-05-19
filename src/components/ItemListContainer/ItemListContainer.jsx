@@ -1,47 +1,47 @@
-import { useState, useEffect } from 'react'
-import { ItemList } from '../ItemList/ItemList'
-import styles from './ItemListContainer.module.css'
+import { useState, useEffect } from "react";
+import { ItemList } from "../ItemList/ItemList";
+import styles from "./ItemListContainer.module.css";
 
-export function ItemListContainer({ Mensaje }) {
-  const [productos, setProductos] = useState([])
-  const [cargando, setCargando] = useState(true)
-  const [error, setError] = useState(null)
-  const [categoria, setCategoria] = useState('juegos')
+export const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [category, setCategory] = useState("juegos");
 
-  const categorias = [
-    { key: 'juegos', label: 'Juegos', img: '/images/juegos.png' },
-    { key: 'consolas', label: 'Consolas', img: '/images/consolas.png' },
-    { key: 'accesorios', label: 'Accesorios', img: '/images/accesorios.png' },
-  ]
+  const categories = [
+    { key: "juegos", label: "Juegos", img: "/images/juegos.png" },
+    { key: "consolas", label: "Consolas", img: "/images/consolas.png" },
+    { key: "accesorios", label: "Accesorios", img: "/images/accesorios.png" },
+  ];
 
-  const productosFiltrados = productos.filter(p => p.categoria === categoria)
+  const filteredProducts = products.filter(
+    (p) => p.category === category
+  );
 
   useEffect(() => {
-    fetch('/data/productos.json')
-      .then(res => {
-        if (!res.ok) throw new Error('No se pudieron cargar los productos')
-        return res.json()
+    fetch("/data/products.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("No se pudieron cargar los productos");
+        return res.json();
       })
-      .then(data => {
-        setProductos(data)
+      .then((data) => {
+        setProducts(data);
       })
-      .catch(err => {
-        setError(err.message)
+      .catch((err) => {
+        setError(err.message);
       })
       .finally(() => {
-        setCargando(false)
-      })
-  }, [])
+        setLoading(false);
+      });
+  }, []);
 
-
-
-  if (cargando) {
+  if (loading) {
     return (
       <div className={styles.loading}>
         <div className={styles.spinner} />
         <p>Cargando productos...</p>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -49,24 +49,23 @@ export function ItemListContainer({ Mensaje }) {
       <div className={styles.error}>
         <p>Error: {error}</p>
       </div>
-    )
+    );
   }
 
   return (
     <div className={styles.container}>
-      {Mensaje && <h2 className={styles.title}>{Mensaje}</h2>}
       <div className={styles.filterBar}>
-        {categorias.map(cat => (
+        {categories.map((cat) => (
           <button
             key={cat.key}
-            className={`${styles.filterBtn} ${categoria === cat.key ? styles.filterBtnActive : ''}`}
-            onClick={() => setCategoria(cat.key)}
+            className={`${styles.filterBtn} ${category === cat.key ? styles.filterBtnActive : ""}`}
+            onClick={() => setCategory(cat.key)}
           >
             <img src={cat.img} alt={cat.label} className={styles.filterImg} />
           </button>
         ))}
       </div>
-      <ItemList productos={productosFiltrados} />
+      <ItemList products={filteredProducts} />
     </div>
-  )
-}
+  );
+};

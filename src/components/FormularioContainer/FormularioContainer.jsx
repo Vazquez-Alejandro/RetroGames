@@ -1,71 +1,78 @@
-import { useState } from 'react'
-import { FormularioProducto } from '../FormularioProducto/FormularioProducto'
-import styles from './FormularioContainer.module.css'
+import { useState } from "react";
+import { FormularioProducto } from "../FormularioProducto/FormularioProducto";
+import styles from "./FormularioContainer.module.css";
 
 export function FormularioContainer() {
-  const [datosForm, setDatosForm] = useState({
-    nombre: '',
-    precio: '',
-    stock: ''
-  })
-  const [imagenFile, setImagenFile] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [mensaje, setMensaje] = useState(null)
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    stock: "",
+  });
+  const [imageFile, setImageFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
 
-  const manejarCambio = (e) => {
-    const { name, value } = e.target
-    setDatosForm({
-      ...datosForm,
-      [name]: value
-    })
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-  const manejarCambioImagen = (e) => {
-    setImagenFile(e.target.files[0])
-  }
+  const handleImageChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
 
-  const manejarEnvio = async (e) => {
-    e.preventDefault()
-    setMensaje(null)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage(null);
 
-    if (!imagenFile) {
-      alert('Por favor, selecciona una imagen')
-      return
+    if (!imageFile) {
+      alert("Por favor, selecciona una imagen");
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     try {
-      console.log('Datos del formulario:', { ...datosForm, imagen: imagenFile.name })
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      console.log("Datos del formulario:", { ...formData, image: imageFile.name });
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      setMensaje({ tipo: 'exito', texto: 'Producto recibido correctamente (modo demostración)' })
+      setMessage({
+        type: "success",
+        text: "Producto recibido correctamente (modo demostración)",
+      });
 
-      setDatosForm({ nombre: '', precio: '', stock: '' })
-      setImagenFile(null)
+      setFormData({ name: "", price: "", stock: "" });
+      setImageFile(null);
     } catch (error) {
-      console.error('Error:', error)
-      setMensaje({ tipo: 'error', texto: 'Hubo un error al procesar el producto' })
+      console.error("Error:", error);
+      setMessage({ type: "error", text: "Hubo un error al procesar el producto" });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.sectionTitle}>Agregar Producto</h2>
-      {mensaje && (
-        <div className={mensaje.tipo === 'exito' ? styles.successMsg : styles.errorMsg}>
-          {mensaje.texto}
+      {message && (
+        <div
+          className={
+            message.type === "success" ? styles.successMsg : styles.errorMsg
+          }
+        >
+          {message.text}
         </div>
       )}
       <FormularioProducto
-        datosForm={datosForm}
-        manejarCambio={manejarCambio}
-        manejarEnvio={manejarEnvio}
-        manejarCambioImagen={manejarCambioImagen}
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleImageChange={handleImageChange}
         loading={loading}
       />
     </div>
-  )
+  );
 }
