@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { useNotify } from "../../context/NotificationContext";
 import { Count } from "../Count/Count";
 import styles from "./Item.module.css";
 
@@ -7,6 +8,7 @@ export const Item = ({ id, name, description, price, image, children, stock }) =
   const [count, setCount] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
   const { addItem } = useCart();
+  const { notify } = useNotify();
 
   const increment = () => {
     if (count < stock) setCount(count + 1);
@@ -21,7 +23,7 @@ export const Item = ({ id, name, description, price, image, children, stock }) =
     e.preventDefault();
     if (count > 0) {
       addItem({ id, name, price, image }, count);
-      alert(`Agregaste ${count} unidad(es) de "${name}" al carrito`);
+      notify(`Agregaste ${count} unidad(es) de "${name}"`);
       setCount(0);
     }
   };

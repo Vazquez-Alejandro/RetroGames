@@ -7,6 +7,7 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartView } from "./components/Cart/CartView";
 import { BootScreen } from "./components/BootScreen/BootScreen";
+import { Notification } from "./components/Notification/Notification";
 
 function App() {
   const [booted, setBooted] = useState(false);
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       {!booted && <BootScreen onFinish={() => setBooted(true)} />}
+      <Notification />
       <div className="app">
         <Layout>
           <Routes>

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useNotify } from "./NotificationContext";
 
 const CartContext = createContext();
 
@@ -13,6 +14,7 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
   const navigate = useNavigate();
+  const { notify } = useNotify();
   const [cart, setCart] = useState([]);
 
   const isInCart = (id) => {
@@ -68,7 +70,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const checkout = () => {
-    alert("Su compra ha sido realizada");
+    notify("¡Compra realizada con éxito!");
     clearCart();
     navigate("/");
   };
