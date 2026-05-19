@@ -1,20 +1,43 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
+import { useAuth } from '../../context/AuthContext'
 import styles from './Nav.module.css'
 
 export const Nav = () => {
   const { totalItems } = useCart()
+  const { user, login, logout } = useAuth()
 
   return (
     <nav>
       <ul className={styles.navList}>
-        <li className={styles.navItem}><Link to="/">Inicio</Link></li>
-        <li className={styles.navItem}><Link to="/productos">Productos</Link></li>
         <li className={styles.navItem}>
-          <Link to="/carrito" className={styles.cartLink}>
+          <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ''}>
+            Inicio
+          </NavLink>
+        </li>
+        <li className={styles.navItem}>
+          <NavLink to="/productos" className={({ isActive }) => isActive ? styles.active : ''}>
+            Productos
+          </NavLink>
+        </li>
+        <li className={styles.navItem}>
+          <NavLink to="/carrito" className={({ isActive }) =>
+            `${styles.cartLink}${isActive ? ` ${styles.active}` : ''}`
+          }>
             Carrito
             {totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
-          </Link>
+          </NavLink>
+        </li>
+        <li className={styles.navItem}>
+          {user ? (
+            <button onClick={logout} className={styles.authBtn}>
+              Salir ({user.username})
+            </button>
+          ) : (
+            <button onClick={() => login('Invitado')} className={styles.authBtn}>
+              Ingresar
+            </button>
+          )}
         </li>
       </ul>
     </nav>

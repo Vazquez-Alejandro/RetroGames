@@ -7,6 +7,7 @@ import { ItemListContainer } from './components/ItemListContainer/ItemListContai
 import { ProductDetail } from './pages/ProductDetail'
 import { Cart } from './pages/Cart'
 import { BootScreen } from './components/BootScreen/BootScreen'
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
 
 function App() {
   const [booted, setBooted] = useState(false)
@@ -20,7 +21,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/productos" element={<ItemListContainer Mensaje="Nuestros productos" />} />
             <Route path="/producto/:id" element={<ProductDetail />} />
-            <Route path="/carrito" element={<Cart />} />
+            <Route path="/carrito" element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            } />
           </Routes>
         </Layout>
       </div>
