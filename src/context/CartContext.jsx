@@ -41,6 +41,24 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  const increaseQuantity = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
+  };
+
   const getTotalItems = () => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
@@ -59,6 +77,8 @@ export const CartProvider = ({ children }) => {
     cart,
     addItem,
     removeItem,
+    increaseQuantity,
+    decreaseQuantity,
     getTotalItems,
     getCartTotal,
     clearCart,

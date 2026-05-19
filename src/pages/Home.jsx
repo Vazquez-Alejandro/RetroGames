@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ItemList } from "../components/ItemList/ItemList";
 import styles from "./Home.module.css";
 
 export function Home() {
@@ -10,9 +11,9 @@ export function Home() {
     fetch("/data/products.json")
       .then((res) => res.json())
       .then((data) => {
-        const game = data.find(p => p.category === "juegos");
-        const consola = data.find(p => p.category === "consolas");
-        const accessory = data.find(p => p.category === "accesorios");
+        const game = data.find((p) => p.category === "juegos");
+        const consola = data.find((p) => p.category === "consolas");
+        const accessory = data.find((p) => p.category === "accesorios");
         setFeatured([game, consola, accessory].filter(Boolean));
       })
       .catch(() => {})
@@ -37,28 +38,7 @@ export function Home() {
       {loading ? (
         <p className={styles.loading}>Cargando...</p>
       ) : (
-        <div className={styles.grid}>
-          {featured.map((product) => (
-            <Link
-              key={product.id}
-              to={`/product/${product.id}`}
-              className={styles.card}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className={styles.cardImage}
-              />
-              <h3 className={styles.cardName}>{product.name}</h3>
-              {product.description && (
-                <p className={styles.cardDescription}>{product.description}</p>
-              )}
-              <p className={styles.cardPrice}>
-                $ {product.price.toLocaleString("es-AR")}
-              </p>
-            </Link>
-          ))}
-        </div>
+        <ItemList products={featured} />
       )}
     </div>
   );
