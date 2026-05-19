@@ -27,11 +27,11 @@ export const CartProvider = ({ children }) => {
       if (existing) {
         return prev.map((el) =>
           el.id === item.id
-            ? { ...el, quantity: el.quantity + quantity }
+            ? { ...el, quantity: Math.min(el.quantity + quantity, item.stock) }
             : el
         );
       }
-      return [...prev, { ...item, quantity }];
+      return [...prev, { ...item, quantity: Math.min(quantity, item.stock) }];
     });
   };
 
@@ -46,7 +46,9 @@ export const CartProvider = ({ children }) => {
   const increaseQuantity = (id) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === id && item.quantity < item.stock
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
       )
     );
   };
