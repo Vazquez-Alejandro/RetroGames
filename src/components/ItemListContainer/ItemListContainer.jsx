@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { ItemList } from "../ItemList/ItemList";
+import { db } from "../../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 import styles from "./ItemListContainer.module.css";
 
 export const ItemListContainer = () => {
@@ -19,20 +21,21 @@ export const ItemListContainer = () => {
   );
 
   useEffect(() => {
-    fetch("/data/products.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("No se pudieron cargar los productos");
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((err) => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "productos"));
+        const items = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(items);
+      } catch (err) {
         setError(err.message);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchProducts();
   }, []);
 
   if (loading) {

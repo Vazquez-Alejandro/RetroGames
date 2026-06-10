@@ -1,14 +1,25 @@
 import { useState, useEffect } from "react";
+import { db } from "../../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 import styles from "./Footer.module.css";
 
 export const Footer = () => {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    fetch("/data/nosotros.json")
-      .then((res) => res.json())
-      .then((data) => setTeam(data))
-      .catch(() => {});
+    const fetchTeam = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "equipo"));
+        const items = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTeam(items);
+      } catch (err) {
+        console.error("Error al cargar equipo:", err);
+      }
+    };
+    fetchTeam();
   }, []);
 
   return (
@@ -19,13 +30,12 @@ export const Footer = () => {
           {team.map((person) => (
             <div key={person.id} className={styles.teamCard}>
               <img
-                src={person.image}
+                src={person.fotoURL}
                 alt={person.name}
                 className={styles.teamImg}
               />
               <p className={styles.teamName}>{person.name}</p>
               <p className={styles.teamRole}>{person.role}</p>
-              <p className={styles.teamEmail}>{person.email}</p>
             </div>
           ))}
         </div>
