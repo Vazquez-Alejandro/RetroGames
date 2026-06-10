@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNotify } from "./NotificationContext";
+import { db } from "../firebase/config";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 const CartContext = createContext();
 
@@ -21,46 +23,98 @@ export const CartProvider = ({ children }) => {
     return cart.some((item) => item.id === id);
   };
 
-  const addItem = (item, quantity = 1) => {
-    setCart((prev) => {
-      const existing = prev.find((el) => el.id === item.id);
-      if (existing) {
-        return prev.map((el) =>
-          el.id === item.id
-            ? { ...el, quantity: Math.min(el.quantity + quantity, item.stock) }
-            : el
-        );
-      }
-      return [...prev, { ...item, quantity: Math.min(quantity, item.stock) }];
-    });
+  const addItem = async (item, quantity = 1) => {
+    try {
+      const docRef = doc(db, "productos", item.id);
+      const docSnap = await getDoc(docRef);
+      const firestoreStock = docSnap.exists() ? docSnap.data().stock : item.stock;
+
+      if (firestoreStock <= 0) return;
+
+      const actualAdd = Math.min(quantity, firestoreStock);
+
+      setCart((prev) => {
+        const existing = prev.find((el) => el.id === item.id);
+        return existing
+          ? prev.map((el) =>
+              el.id === item.id
+                ? { ...el, quantity: el.quantity + actualAdd }
+                : el
+            )
+          : [...prev, { ...item, quantity: actualAdd }];
+      });
+
+      await updateDoc(docRef, { stock: firestoreStock - actualAdd });
+    } catch (err) {
+      console.error("Error al actualizar stock:", err);
+    }
   };
 
-  const removeItem = (id) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeItem = async (id) => {
+    const item = cart.find((el) => el.id === id);
+    if (!item) return;
+
+    try {
+      const docRef = doc(db, "productos", id);
+      const docSnap = await getDoc(docRef);
+      const currentStock = docSnap.exists() ? docSnap.data().stock : 0;
+      await updateDoc(docRef, { stock: currentStock + item.quantity });
+    } catch (err) {
+      console.error("Error al restaurar stock:", err);
+    }
+
+    setCart((prev) => prev.filter((el) => el.id !== id));
   };
 
   const clearCart = () => {
     setCart([]);
   };
 
-  const increaseQuantity = (id) => {
+  const increaseQuantity = async (id) => {
+    try {
+      const docRef = doc(db, "productos", id);
+      const docSnap = await getDoc(docRef);
+      const firestoreStock = docSnap.exists() ? docSnap.data().stock : 0;
+      if (firestoreStock <= 0) return;
+      await updateDoc(docRef, { stock: firestoreStock - 1 });
+    } catch (err) {
+      console.error("Error al actualizar stock:", err);
+    }
+
     setCart((prev) =>
-      prev.map((item) =>
-        item.id === id && item.quantity < item.stock
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+      prev.map((el) =>
+        el.id === id ? { ...el, quantity: el.quantity + 1 } : el
       )
     );
   };
 
-  const decreaseQuantity = (id) => {
-    setCart((prev) =>
-      prev
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+  const decreaseQuantity = async (id) => {
+    const item = cart.find((el) => el.id === id);
+    if (!item) return;
+
+    try {
+      const docRef = doc(db, "productos", id);
+      const docSnap = await getDoc(docRef);
+      const currentStock = docSnap.exists() ? docSnap.data().stock : 0;
+      await updateDoc(docRef, { stock: currentStock + 1 });
+    } catch (err) {
+      console.error("Error al restaurar stock:", err);
+    }
+
+    if (item.quantity <= 1) {
+      setCart((prev) => prev.filter((el) => el.id !== id));
+    } else {
+      setCart((prev) =>
+        prev.map((el) =>
+          el.id === id ? { ...el, quantity: el.quantity - 1 } : el
         )
-        .filter((item) => item.quantity > 0)
-    );
+      );
+    }
+  };
+
+  const getCantidadActual = (productId) => {
+    const item = cart.find((el) => el.id === productId);
+    return item ? item.quantity : 0;
   };
 
   const getTotalItems = () => {
@@ -83,6 +137,7 @@ export const CartProvider = ({ children }) => {
     removeItem,
     increaseQuantity,
     decreaseQuantity,
+    getCantidadActual,
     getTotalItems,
     getCartTotal,
     clearCart,

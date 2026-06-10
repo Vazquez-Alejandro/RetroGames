@@ -7,11 +7,13 @@ import styles from "./Item.module.css";
 export const Item = ({ id, name, description, price, image, children, stock }) => {
   const [count, setCount] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
-  const { addItem } = useCart();
+  const { addItem, getCantidadActual } = useCart();
   const { notify } = useNotify();
+  const enCarrito = getCantidadActual(id);
+  const stockDisponible = stock - enCarrito;
 
   const increment = () => {
-    if (count < stock) setCount(count + 1);
+    if (count < stockDisponible) setCount(count + 1);
   };
 
   const decrement = () => {
@@ -34,21 +36,27 @@ export const Item = ({ id, name, description, price, image, children, stock }) =
     setIsFavorite(!isFavorite);
   };
 
+  const sinStock = stockDisponible <= 0;
+
   return (
     <div className={styles.card}>
       <img src={image} alt={name} className={styles.image} />
       <h3 className={styles.name}>{name}</h3>
       {description && <p className={styles.description}>{description}</p>}
       <p className={styles.price}>$ {price.toLocaleString("es-AR")}</p>
-      {stock && <p className={styles.stock}>Stock: {stock} unidad(es)</p>}
+      {sinStock ? (
+        <p className={styles.stock}>Sin stock</p>
+      ) : (
+        <p className={styles.stock}>Stock: {stockDisponible} unidad(es)</p>
+      )}
       {children ? (
         children
       ) : (
         <>
           <Count count={count} increment={increment} decrement={decrement} />
           <div className={styles.actions}>
-            <button className={styles.addBtn} onClick={handleAddToCart}>
-              Agregar al carrito
+            <button className={styles.addBtn} onClick={handleAddToCart} disabled={sinStock}>
+              {sinStock ? "Sin stock" : "Agregar al carrito"}
             </button>
             <span className={styles.favoriteBtn} onClick={handleFavorite}>
               {isFavorite ? "⭐" : "☆"}

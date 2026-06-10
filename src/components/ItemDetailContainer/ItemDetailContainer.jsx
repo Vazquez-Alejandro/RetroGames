@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { db } from "../../firebase/config";
+import { collection, getDoc, doc } from "firebase/firestore";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import styles from "./ItemDetailContainer.module.css";
 
@@ -9,18 +11,22 @@ export const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const item = data.find((element) => String(element.id) === id);
-        if (item) {
-          setItemDetail(item);
-          return;
+    const fetchProduct = async () => {
+      try {
+        const docRef = doc(db, "productos", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setItemDetail({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.log("Elemento no encontrado");
         }
-        throw new Error("Elemento no encontrado");
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProduct();
   }, [id]);
 
   if (loading) return <p>Cargando...</p>;

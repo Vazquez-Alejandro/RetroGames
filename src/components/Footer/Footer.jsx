@@ -3,6 +3,8 @@ import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import styles from "./Footer.module.css";
 
+const GITHUB_URL = "https://github.com/Vazquez-Alejandro";
+
 export const Footer = () => {
   const [team, setTeam] = useState([]);
 
@@ -36,6 +38,9 @@ export const Footer = () => {
               />
               <p className={styles.teamName}>{person.name}</p>
               <p className={styles.teamRole}>{person.role}</p>
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={styles.teamLink}>
+                GitHub
+              </a>
             </div>
           ))}
         </div>
