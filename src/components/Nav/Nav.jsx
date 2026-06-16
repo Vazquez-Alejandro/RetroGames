@@ -5,7 +5,7 @@ import styles from "./Nav.module.css";
 
 export const Nav = () => {
   const { getTotalItems } = useCart();
-  const { user, login, logout } = useAuth();
+  const { user } = useAuth();
   const totalItems = getTotalItems();
 
   return (
@@ -40,31 +40,44 @@ export const Nav = () => {
             )}
           </NavLink>
         </li>
-        <li className={styles.navItem}>
-          <NavLink
-            to="/admin/cupones"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Cupones
-          </NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink
-            to="/admin/productos"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Productos
-          </NavLink>
-        </li>
+        {user && user.rol === "admin" && (
+          <>
+            <li className={styles.navItem}>
+              <NavLink
+                to="/admin/productos"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Productos
+              </NavLink>
+            </li>
+            <li className={styles.navItem}>
+              <NavLink
+                to="/admin/cupones"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Cupones
+              </NavLink>
+            </li>
+          </>
+        )}
         <li className={styles.navItem}>
           {user ? (
-            <button onClick={logout} className={styles.authBtn}>
-              Salir ({user.username})
-            </button>
+            <>
+              <span className={styles.userEmail}>{user.email}</span>
+              <NavLink
+                to="/perfil"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Perfil
+              </NavLink>
+            </>
           ) : (
-            <button onClick={() => login("Invitado")} className={styles.authBtn}>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? styles.active : "")}
+            >
               Ingresar
-            </button>
+            </NavLink>
           )}
         </li>
       </ul>
