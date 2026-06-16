@@ -49,6 +49,14 @@ export const Nav = () => {
           </NavLink>
         </li>
         <li className={styles.navItem}>
+          <NavLink
+            to="/admin/productos"
+            className={({ isActive }) => (isActive ? styles.active : "")}
+          >
+            Productos
+          </NavLink>
+        </li>
+        <li className={styles.navItem}>
           {user ? (
             <button onClick={logout} className={styles.authBtn}>
               Salir ({user.username})

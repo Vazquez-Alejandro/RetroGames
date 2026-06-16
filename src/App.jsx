@@ -7,6 +7,7 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartView } from "./components/Cart/CartView";
 import { GestionCupones } from "./components/GestionCupones/GestionCupones";
+import { GestionProductos } from "./components/GestionProductos/GestionProductos";
 import { BootScreen } from "./components/BootScreen/BootScreen";
 import { Notification } from "./components/Notification/Notification";
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/product/:id" element={<ItemDetailContainer />} />
             <Route path="/carrito" element={<CartView />} />
             <Route path="/admin/cupones" element={<GestionCupones />} />
+            <Route path="/admin/productos" element={<GestionProductos />} />
           </Routes>
         </Layout>
       </div>
