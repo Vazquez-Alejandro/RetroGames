@@ -1,0 +1,156 @@
+================================================================================
+  PLAN DE TEST - RETRO GAMES
+  Clases 9 a 13
+================================================================================
+
+  ADMIN: admin@admin.com / admin123
+  (Crear en Firebase Console → Authentication → Email/Password,
+   luego en Firestore → colección "usuarios" → doc ID = UID del admin → {rol: "admin"})
+
+================================================================================
+  CLASE 9 - Firebase Firestore + Lógica de carrito
+================================================================================
+
+  [ ] 1. Productos se cargan desde Firestore (no desde JSON local)
+       - Ir a /productos
+       - Verificar que aparecen 14 items en 3 categorías
+
+  [ ] 2. Filtro por categorías (juegos, consolas, accesorios)
+       - Clickear cada categoría
+       - Verificar que se muestren solo los productos de esa categoría
+
+  [ ] 3. Footer carga equipo desde Firestore
+       - Verificar que aparecen Gordon, Cherry y Alejandro
+       - Verificar que tienen foto, rol, y link a GitHub
+
+  [ ] 4. getCantidadActual en CartContext
+       - Agregar un producto al carrito desde /product/:id
+       - Volver a entrar al detalle: el contador arranca en 0 (cuántos más agregar)
+       - Muestra "En carrito: X" arriba
+
+  [ ] 5. Stock en vivo en cards de productos
+       - Agregar 3 unidades de un producto con stock 10
+       - La card muestra "Stock: 7" automáticamente
+
+  [ ] 6. Sin stock cuando llega a 0
+       - Agotar el stock de un producto desde el carrito
+       - La card muestra "Sin stock" y el botón se desactiva
+
+  [ ] 7. Stock se actualiza en Firestore al agregar/quitar del carrito
+       - Agregar 5 unidades de un producto
+       - Refrescar la página: el stock debe reflejar los 5 descontados
+
+================================================================================
+  CLASE 10 - Cupones de descuento (CRUD)
+================================================================================
+
+  [ ] 8. Ruta /admin/cupones accesible (solo para admin)
+       - Ir a /admin/cupones
+
+  [ ] 9. Crear cupón
+       - Completar formulario: código + porcentaje
+       - Clickea "Crear cupón"
+       - Verificar que aparece en la lista
+
+  [ ] 10. Eliminar cupón
+        - Clickea "Eliminar" en un cupón existente
+        - Verificar que desaparece de la lista
+
+  [ ] 11. Validación de formulario
+        - Intentar crear cupón con código vacío → muestra error
+        - Intentar con porcentaje > 100 → muestra error
+
+================================================================================
+  CLASE 11 - CRUD de productos + Validación
+================================================================================
+
+  [ ] 12. Ruta /admin/productos (solo admin)
+        - Ir a /admin/productos
+
+  [ ] 13. Lista de productos con editar/eliminar
+        - Verificar que aparecen todos los productos de Firestore
+        - Cada uno tiene botones "Editar" y "Eliminar"
+
+  [ ] 14. Editar producto
+        - Clickea "Editar" en un producto
+        - Verificar que el formulario se llena con los datos
+        - El título cambia a "Editar producto"
+        - El botón cambia a "Actualizar producto"
+        - Modificar algún campo y guardar
+        - Verificar que se actualiza en la lista
+
+  [ ] 15. Cancelar edición
+        - Editar un producto
+        - Clickea "Cancelar edición"
+        - Verificar que el formulario vuelve al estado inicial
+
+  [ ] 16. Validación de formulario
+        - Intentar guardar con nombre vacío → alerta
+        - Intentar con precio 0 o negativo → alerta
+
+  [ ] 17. Eliminar producto con confirmación
+        - Clickea "Eliminar"
+        - Verificar que aparece un confirm
+        - Confirmar: el producto desaparece de la lista
+
+================================================================================
+  CLASE 12 - Autenticación (Firebase Auth) + Perfil
+================================================================================
+
+  [ ] 18. Registro de usuario
+        - Ir a /registro
+        - Crear cuenta con email y contraseña
+        - Verificar que redirige al inicio y aparece el email en el Nav
+
+  [ ] 19. Login
+        - Ir a /login
+        - Ingresar con admin@admin.com / admin123
+        - Verificar que redirige al inicio
+
+  [ ] 20. Nav condicional según autenticación
+        - Sin login: muestra "Ingresar"
+        - Con login: muestra email + "Perfil"
+        - Con login admin: además muestra links "Productos" y "Cupones"
+
+  [ ] 21. Ruta /perfil protegida
+        - Sin login, ir a /perfil → redirige a /login
+        - Con login, ir a /perfil → muestra "¡Hola de nuevo, {email}!"
+
+  [ ] 22. Cerrar sesión desde /perfil
+        - Ir a /perfil → Clickea "Cerrar Sesión"
+        - Redirige a /, Nav muestra "Ingresar"
+
+  [ ] 23. Ruta /admin/productos protegida con rol admin
+        - Sin login → redirige a /login
+        - Con user común → redirige a /login
+        - Con admin → acceso permitido
+
+================================================================================
+  CLASE 13 - Búsqueda, Iconos, SEO
+================================================================================
+
+  [ ] 24. Barra de búsqueda en /productos
+        - Ir a /productos
+        - Escribir en el input de búsqueda
+        - Verificar que filtra productos por nombre en tiempo real
+
+  [ ] 25. Iconos en botones
+        - Ir a /admin/productos
+        - Verificar iconos en botones: Editar, Eliminar, Guardar, Cancelar
+        - Verificar icono de búsqueda (lupa) en /productos
+
+  [ ] 26. SEO con React Helmet
+        - Ir a / → title debe ser "Retro Games | Tienda de productos retro"
+        - Ir a /product/:id → title debe ser "Retro Games | {nombre del producto}"
+
+================================================================================
+  FLUJOS COMPLETOS
+================================================================================
+
+  [ ] 27. Flujo: Registro → Login → Explorar productos → Agregar al carrito
+        → Ver carrito → Eliminar del carrito → Cerrar sesión
+
+  [ ] 28. Flujo: Login admin → Gestionar productos (crear, editar, eliminar)
+        → Gestionar cupones (crear, eliminar) → Ver perfil → Cerrar sesión
+
+================================================================================

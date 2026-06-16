@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { ItemList } from "../components/ItemList/ItemList";
 import styles from "./Home.module.css";
 
@@ -22,6 +23,10 @@ export function Home() {
 
   return (
     <div>
+      <Helmet>
+        <title>Retro Games | Tienda de productos retro</title>
+        <meta name="description" content="Los mejores juegos, consolas y accesorios retro de la vieja escuela." />
+      </Helmet>
       <section className={styles.hero}>
         <p className={styles.welcome}>Bienvenido</p>
         <h1 className={styles.title}>Retro Games</h1>

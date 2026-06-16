@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaEdit, FaTrash, FaSave, FaTimes } from "react-icons/fa";
 import { db } from "../../firebase/config";
 import {
   collection,
@@ -219,6 +220,7 @@ export const GestionProductos = () => {
 
         <div className={styles.formActions}>
           <button type="submit" className={styles.submitBtn}>
+            <FaSave style={{ marginRight: "5px" }} />
             {productoAEditar ? "Actualizar producto" : "Guardar producto"}
           </button>
           {productoAEditar && (
@@ -227,6 +229,7 @@ export const GestionProductos = () => {
               className={styles.cancelBtn}
               onClick={cancelarEdicion}
             >
+              <FaTimes style={{ marginRight: "5px" }} />
               Cancelar edición
             </button>
           )}
@@ -261,12 +264,14 @@ export const GestionProductos = () => {
                     className={styles.editBtn}
                     onClick={() => handleEditClick(producto)}
                   >
+                    <FaEdit style={{ marginRight: "4px" }} />
                     Editar
                   </button>
                   <button
                     className={styles.deleteBtn}
                     onClick={() => handleDelete(producto.id)}
                   >
+                    <FaTrash style={{ marginRight: "4px" }} />
                     Eliminar
                   </button>
                 </div>

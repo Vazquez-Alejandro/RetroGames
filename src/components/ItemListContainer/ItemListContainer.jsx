@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ItemList } from "../ItemList/ItemList";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
+import { FaSearch } from "react-icons/fa";
 import styles from "./ItemListContainer.module.css";
 
 export const ItemListContainer = () => {
@@ -9,6 +10,7 @@ export const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [category, setCategory] = useState("juegos");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
     { key: "juegos", label: "Juegos", img: "/images/juegos.png" },
@@ -19,6 +21,12 @@ export const ItemListContainer = () => {
   const filteredProducts = products.filter(
     (p) => p.category === category
   );
+
+  const searchedProducts = searchTerm
+    ? filteredProducts.filter((p) =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : filteredProducts;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -57,6 +65,16 @@ export const ItemListContainer = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.searchBar}>
+        <FaSearch className={styles.searchIcon} />
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Buscar productos por nombre..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <div className={styles.filterBar}>
         {categories.map((cat) => (
           <button
@@ -68,7 +86,7 @@ export const ItemListContainer = () => {
           </button>
         ))}
       </div>
-      <ItemList products={filteredProducts} />
+      <ItemList products={searchedProducts} />
     </div>
   );
 };

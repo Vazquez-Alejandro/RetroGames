@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { db } from "../../firebase/config";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
@@ -34,6 +35,10 @@ export const ItemDetailContainer = () => {
 
   return (
     <section className={styles.container}>
+      <Helmet>
+        <title>Retro Games | {itemDetail.name}</title>
+        <meta name="description" content={itemDetail.description} />
+      </Helmet>
       <Link to="/productos" className={styles.backLink}>
         &larr; Volver a productos
       </Link>
