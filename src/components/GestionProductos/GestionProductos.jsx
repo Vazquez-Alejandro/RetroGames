@@ -31,6 +31,8 @@ export const GestionProductos = () => {
   const [form, setForm] = useState(initialForm);
   const [productoAEditar, setProductoAEditar] = useState(null);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "productos"), (snapshot) => {
@@ -66,21 +68,22 @@ export const GestionProductos = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     if (!form.name.trim()) {
-      alert("El campo nombre no puede estar vacío");
+      setError("El campo nombre no puede estar vacío");
       return;
     }
 
     const price = Number(form.price);
     if (isNaN(price) || price <= 0) {
-      alert("El precio debe ser un número mayor que cero");
+      setError("El precio debe ser un número mayor que cero");
       return;
     }
 
     const stock = Number(form.stock);
     if (isNaN(stock) || stock < 0) {
-      alert("El stock debe ser un número válido");
+      setError("El stock debe ser un número válido");
       return;
     }
 
@@ -96,11 +99,11 @@ export const GestionProductos = () => {
     try {
       if (productoAEditar) {
         await updateDoc(doc(db, "productos", productoAEditar.id), productData);
-        alert("Producto actualizado con éxito");
+        setSuccess("Producto actualizado con éxito");
         setProductoAEditar(null);
       } else {
         await addDoc(collection(db, "productos"), productData);
-        alert("Producto guardado con éxito");
+        setSuccess("Producto guardado con éxito");
       }
       setForm(initialForm);
     } catch (err) {
@@ -116,13 +119,15 @@ export const GestionProductos = () => {
     setProductoAEditar(null);
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm("¿Estás seguro de eliminar este producto?")) return;
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
     try {
-      await deleteDoc(doc(db, "productos", id));
+      await deleteDoc(doc(db, "productos", deleteTarget));
+      setSuccess("Producto eliminado con éxito");
     } catch (err) {
-      console.error("Error al eliminar:", err);
+      setError("Error al eliminar: " + err.message);
     }
+    setDeleteTarget(null);
   };
 
   return (
@@ -134,6 +139,7 @@ export const GestionProductos = () => {
           {productoAEditar ? "Editar producto" : "Agregar nuevo producto"}
         </h3>
         {error && <p className={styles.error}>{error}</p>}
+        {success && <p className={styles.success}>{success}</p>}
 
         <div className={styles.field}>
           <label className={styles.label}>Nombre</label>
@@ -269,7 +275,7 @@ export const GestionProductos = () => {
                   </button>
                   <button
                     className={styles.deleteBtn}
-                    onClick={() => handleDelete(producto.id)}
+                    onClick={() => setDeleteTarget(producto.id)}
                   >
                     <FaTrash style={{ marginRight: "4px" }} />
                     Eliminar
@@ -280,6 +286,25 @@ export const GestionProductos = () => {
           </ul>
         )}
       </section>
+
+      {deleteTarget && (
+        <div className={styles.overlay} onClick={() => setDeleteTarget(null)}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <p className={styles.modalText}>¿Eliminar este producto?</p>
+            <div className={styles.modalActions}>
+              <button className={styles.modalConfirm} onClick={confirmDelete}>
+                Eliminar
+              </button>
+              <button
+                className={styles.modalCancel}
+                onClick={() => setDeleteTarget(null)}
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
