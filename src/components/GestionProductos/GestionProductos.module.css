@@ -136,6 +136,30 @@
   text-align: center;
 }
 
+.successBanner {
+  background: #003d1f;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  font-size: 0.7rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+}
+
+.errorBanner {
+  background: #3d0000;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  font-size: 0.7rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(255, 68, 68, 0.3);
+}
+
 .overlay {
   position: fixed;
   inset: 0;

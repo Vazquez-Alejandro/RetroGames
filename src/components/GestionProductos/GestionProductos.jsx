@@ -138,8 +138,6 @@ export const GestionProductos = () => {
         <h3 className={styles.subtitle}>
           {productoAEditar ? "Editar producto" : "Agregar nuevo producto"}
         </h3>
-        {error && <p className={styles.error}>{error}</p>}
-        {success && <p className={styles.success}>{success}</p>}
 
         <div className={styles.field}>
           <label className={styles.label}>Nombre</label>
@@ -241,6 +239,17 @@ export const GestionProductos = () => {
           )}
         </div>
       </form>
+
+      {success && (
+        <div className={styles.successBanner}>
+          <span>✓</span> {success}
+        </div>
+      )}
+      {error && (
+        <div className={styles.errorBanner}>
+          <span>✕</span> {error}
+        </div>
+      )}
 
       <section className={styles.listSection}>
         <h3 className={styles.subtitle}>Productos existentes</h3>
