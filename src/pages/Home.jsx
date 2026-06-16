@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/config";
 import { ItemList } from "../components/ItemList/ItemList";
 import styles from "./Home.module.css";
 
@@ -9,9 +11,9 @@ export function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/products.json")
-      .then((res) => res.json())
-      .then((data) => {
+    getDocs(collection(db, "productos"))
+      .then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         const game = data.find((p) => p.category === "juegos");
         const consola = data.find((p) => p.category === "consolas");
         const accessory = data.find((p) => p.category === "accesorios");
