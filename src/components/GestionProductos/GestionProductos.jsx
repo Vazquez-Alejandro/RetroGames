@@ -13,7 +13,7 @@ import styles from "./GestionProductos.module.css";
 
 const initialForm = {
   name: "",
-  category: "juegos-atari",
+  category: "juegos",
   description: "",
   price: "",
   stock: "",
@@ -21,9 +21,7 @@ const initialForm = {
 };
 
 const categories = [
-  { key: "juegos-atari", label: "Juegos Atari" },
-  { key: "juegos-family", label: "Juegos Family" },
-  { key: "juegos-coleco", label: "Juegos Coleco" },
+  { key: "juegos", label: "Juegos" },
   { key: "consolas", label: "Consolas" },
   { key: "accesorios", label: "Accesorios" },
 ];
@@ -35,12 +33,6 @@ export const GestionProductos = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
-  const [oldJuegosCount, setOldJuegosCount] = useState(0);
-
-  useEffect(() => {
-    const old = productos.filter((p) => p.category === "juegos");
-    setOldJuegosCount(old.length);
-  }, [productos]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "productos"), (snapshot) => {
@@ -57,7 +49,7 @@ export const GestionProductos = () => {
     if (productoAEditar) {
       setForm({
         name: productoAEditar.name || "",
-        category: productoAEditar.category || "juegos-atari",
+        category: productoAEditar.category || "juegos",
         description: productoAEditar.description || "",
         price: String(productoAEditar.price ?? ""),
         stock: String(productoAEditar.stock ?? ""),
@@ -138,26 +130,9 @@ export const GestionProductos = () => {
     setDeleteTarget(null);
   };
 
-  const migrarJuegos = async () => {
-    const old = productos.filter((p) => p.category === "juegos");
-    for (const p of old) {
-      await updateDoc(doc(db, "productos", p.id), { category: "juegos-atari" });
-    }
-    setSuccess(`${old.length} productos migrados a "juegos-atari"`);
-  };
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Gestión de Productos</h2>
-
-      {oldJuegosCount > 0 && (
-        <div className={styles.migrateBanner}>
-          <span>Hay {oldJuegosCount} productos con categoría "juegos" (obsoleta).</span>
-          <button className={styles.migrateBtn} onClick={migrarJuegos}>
-            Migrar a "juegos-atari"
-          </button>
-        </div>
-      )}
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <h3 className={styles.subtitle}>

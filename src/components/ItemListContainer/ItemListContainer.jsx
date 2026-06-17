@@ -9,13 +9,11 @@ export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [category, setCategory] = useState("juegos-atari");
+  const [category, setCategory] = useState("juegos");
   const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
-    { key: "juegos-atari", label: "Juegos Atari", img: "/images/Atari2600.png" },
-    { key: "juegos-family", label: "Juegos Family", img: "/images/FamilyGame.png" },
-    { key: "juegos-coleco", label: "Juegos Coleco", img: "/images/ColecoVision.png" },
+    { key: "juegos", label: "Juegos", img: "/images/juegos.png" },
     { key: "consolas", label: "Consolas", img: "/images/consolas.png" },
     { key: "accesorios", label: "Accesorios", img: "/images/accesorios.png" },
   ];
