@@ -9,26 +9,19 @@ export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [category, setCategory] = useState("juegos");
-  const [subCategory, setSubCategory] = useState("juegos-atari");
+  const [category, setCategory] = useState("juegos-atari");
   const [searchTerm, setSearchTerm] = useState("");
 
   const categories = [
-    { key: "juegos", label: "Juegos", img: "/images/juegos.png" },
+    { key: "juegos-atari", label: "Juegos Atari", img: "/images/Atari2600.png" },
+    { key: "juegos-family", label: "Juegos Family", img: "/images/FamilyGame.png" },
+    { key: "juegos-coleco", label: "Juegos Coleco", img: "/images/ColecoVision.png" },
     { key: "consolas", label: "Consolas", img: "/images/consolas.png" },
     { key: "accesorios", label: "Accesorios", img: "/images/accesorios.png" },
   ];
 
-  const subCategories = [
-    { key: "juegos-atari", label: "Atari", img: "/images/Atari2600.png" },
-    { key: "juegos-family", label: "Family Game", img: "/images/FamilyGame.png" },
-    { key: "juegos-coleco", label: "ColecoVision", img: "/images/ColecoVision.png" },
-  ];
-
-  const activeCategory = category === "juegos" ? subCategory : category;
-
   const filteredProducts = products.filter(
-    (p) => p.category === activeCategory
+    (p) => p.category === category
   );
 
   const searchedProducts = searchTerm
@@ -95,20 +88,6 @@ export const ItemListContainer = () => {
           </button>
         ))}
       </div>
-      {category === "juegos" && (
-        <div className={styles.subFilterBar}>
-          {subCategories.map((sub) => (
-            <button
-              key={sub.key}
-              className={`${styles.subFilterBtn} ${subCategory === sub.key ? styles.subFilterBtnActive : ""}`}
-              onClick={() => setSubCategory(sub.key)}
-            >
-              <img src={sub.img} alt={sub.label} className={styles.subFilterImg} />
-              <span className={styles.subFilterLabel}>{sub.label}</span>
-            </button>
-          ))}
-        </div>
-      )}
       <ItemList products={searchedProducts} />
     </div>
   );
