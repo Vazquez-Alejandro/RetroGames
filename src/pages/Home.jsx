@@ -14,7 +14,7 @@ export function Home() {
     getDocs(collection(db, "productos"))
       .then((snapshot) => {
         const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        const game = data.find((p) => p.category === "juegos");
+        const game = data.find((p) => p.category === "juegos-atari");
         const consola = data.find((p) => p.category === "consolas");
         const accessory = data.find((p) => p.category === "accesorios");
         setFeatured([game, consola, accessory].filter(Boolean));

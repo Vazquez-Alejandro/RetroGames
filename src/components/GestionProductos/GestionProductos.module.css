@@ -14,6 +14,36 @@
   text-shadow: 0 0 8px #00ff8866;
 }
 
+.migrateBanner {
+  background: #1a1a2e;
+  border: 1px solid #ffcc00;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.55rem;
+  color: #ffcc00;
+}
+
+.migrateBtn {
+  font-family: "Press Start 2P", system-ui, monospace;
+  font-size: 0.5rem;
+  background: #ffcc00;
+  color: #0d0d1a;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.migrateBtn:hover {
+  background: #e6b800;
+}
+
 .subtitle {
   font-size: 0.75rem;
   margin-bottom: 1rem;
