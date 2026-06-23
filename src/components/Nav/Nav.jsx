@@ -47,7 +47,7 @@ export const Nav = () => {
                 to="/admin/productos"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Productos
+                Admin
               </NavLink>
             </li>
             <li className={styles.navItem}>

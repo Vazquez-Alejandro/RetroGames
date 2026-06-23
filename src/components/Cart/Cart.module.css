@@ -55,3 +55,77 @@
   color: var(--bg-dark);
   box-shadow: var(--shadow-success);
 }
+
+.couponSection {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.couponInput {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.couponField {
+  font-family: "Press Start 2P", system-ui, monospace;
+  font-size: 8px;
+  padding: 8px;
+  background: var(--bg-dark);
+  border: 2px solid var(--text-dim);
+  color: var(--text);
+  width: 200px;
+  text-transform: uppercase;
+}
+
+.applyBtn {
+  font-family: "Press Start 2P", system-ui, monospace;
+  font-size: 8px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: var(--bg-dark);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.applyBtn:hover {
+  background: var(--secondary);
+}
+
+.couponActive {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  color: var(--success);
+}
+
+.removeCouponBtn {
+  font-family: "Press Start 2P", system-ui, monospace;
+  font-size: 7px;
+  padding: 4px 8px;
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.removeCouponBtn:hover {
+  background: var(--danger);
+  color: var(--bg-dark);
+}
+
+.couponError {
+  font-size: 7px;
+  color: var(--danger);
+  margin-top: 8px;
+}
+
+.couponSuccess {
+  font-size: 7px;
+  color: var(--success);
+  margin-top: 8px;
+}

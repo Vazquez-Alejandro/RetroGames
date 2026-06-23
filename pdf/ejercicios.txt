@@ -1,0 +1,348 @@
+Ejercicio - Clase 1 - React.JS
+⚙️Ejercicios prácticos
+React JS
+Clase 01 | Primeros pasos con ReactJS
+⚙️Ejercicio práctico
+Obligatorio
+Primeros pasos:
+
+    Preparar el terreno:
+
+    Creá un proyecto nuevo con Vite (npm create vite@latest).
+
+    Navegá a la carpeta, instalá las dependencias (npm install) y levantá el servidor (npm run dev).
+
+    Limpiá el archivo /src/App.jsx como hicimos en la clase, dejándolo listo para recibir nuestros nuevos componentes.
+
+    Crear los componentes "hijos":Dentro de la carpeta /src creá:
+
+     Un archivo llamado Encabezado.jsx que represente a un título h1
+
+    Otro archivo llamado CuerpoPosteo.jsx que contenga un párrafo o alguna descripción que te interese
+
+    Otro llamado PieDePosteo.jsx para generar el footer de la página
+
+    Ensamblar todo en App.jsx (el componente "padre"): Andá a tu archivo /src/App.jsx e importá los tres componentes que acabás de crear al principio del archivo.
+
+    Usalos dentro del return de la función App, en orden.
+
+    Si mirás el navegador, deberías ver tu posteo completo. Con esto, el concepto de dividir para conquistar queda mucho más claro. ¡A meterle!
+
+Ejercicio - Clase 2 - React.JS
+⚙️Ejercicio prácticos
+
+¡Talento Lab te está esperando!
+Imaginá que recibís una invitación para participar en el proceso de selección de Talento Lab una startup ubicada en Buenos Aires.
+¿Cuál sería el reto?
+Completar una pasantía de aprendizaje que pondrá a prueba todas tus habilidades y aprendizaje. A partir de este momento un equipo de expertos te guiarán en este emocionante viaje.
+
+Acerca de TalentoLab.
+En TechLab, convertimos ideas en herramientas digitales innovadoras y confiables, ofreciendo servicios de desarrollo con un enfoque en la calidad y eficiencia. Nuestro compromiso es desarrollar soluciones que optimicen procesos y potencien negocios, combinando creatividad, tecnología de punta y un compromiso absoluto con la satisfacción de nuestros clientes. Tu éxito es nuestra prioridad, y nuestras soluciones están diseñadas para marcar la diferencia.
+Equipo Tech Lab:
+Silvia
+Product Owner
+Luis
+Diseñador UX/UI
+Matias
+Desarrollador
+Sabrina
+Desarrolladora
+⚙️Situación inicial en TechLab.
+¡Únete al equipo TechLab! ✨
+La familia de TechLab está buscando un nuevo integrante para colaborar en el desarrollo de un emocionante producto innovador. Buscamos personas con un perfil proactivo, autodidacta e innovador, apasionadas por el aprendizaje continuo y con ganas de afrontar grandes desafíos.
+⚙️Ejercicio práctico
+Obligatorio
+
+Hemos preparado una serie de ejercicios prácticos diseñados para evaluar tus habilidades técnicas. Estos retos nos permitirán conocerte mejor y comprobar cómo aplicas tus conocimientos en situaciones reales.
+
+
+⚙️Ejercicio práctico
+Obligatorio
+Lista de asistentes
+Tu tarea será crear una pequeña aplicación que muestre una lista de asistentes a un evento. Para esto, vas a necesitar crear un componente reutilizable (Asistente) que muestre los datos de una persona y usarlo dentro de App.jsx para renderizar la lista completa a partir de un array de datos.
+Pasos a seguir:
+1
+
+    Componente asistente.jsx:
+
+    Creá un nuevo archivo /src/Asistente.jsx.
+
+    Este componente debe recibir tres props: nombre, tarea y emoji.
+
+    Adentro, tiene que mostrar esos datos. Por ejemplo, en un div que contenga un h3 para el nombre y un p para la tarea con su emoji. ¡Usá la desestructuración de props que vimos!
+
+2
+Componente App.jsx:
+
+    Dentro de App.jsx, creá un array de objetos. Cada objeto va a representar un asistente y va a tener las propiedades nombre, tarea y emoji. Podés usar este de ejemplo
+
+const asistentes = [ 
+{ nombre: 'Juan Pérez', tarea: 'Frontend Developer', emoji: '👨‍💻' },
+{ nombre: 'Ana Gómez', tarea: 'Diseñadora UX/UI', emoji: '🎨' },
+{ nombre: 'Carlos Ruiz', tarea: 'Backend Developer', emoji: '👩‍💻' }
+];
+
+    Usá el método .map() sobre el array asistentes para generar un componente <Asistente /> por cada persona en la lista.
+
+    No te olvides de pasarle a cada <Asistente /> las props correspondientes y la key única.
+
+Gamma
+
+Ejercicio - Clase 3 - React.JS
+⚙️Ejercicios prácticos
+Segunda fase del proceso para sumarte a TalentoLab
+Silvia
+Product Owner
+En este segundo ejercicio práctico te desafiamos a demostrar tu creatividad y habilidades técnicas para estructurar y diseñar una interfaz dinámica y funcional utilizando React. Prepárate para este reto, que evaluará tu capacidad para trabajar con componentes, props y estilos.
+⚙️Ejercicio práctico
+Obligatorio
+Maquetando la home de tu E-commerce:
+Crear la estructura visual de la página principal para una tienda online, aplicando los conceptos de componentización y estilos vistos en clase.
+⚙️Ejercicio práctico
+Obligatorio
+Definir la identidad visual:
+Elegí una paleta de colores que te guste y que creas que se relaciona con la marca o el tipo de productos de tu e-commerce.
+⚙️Ejercicio práctico
+Obligatorio
+Construir el Layout principal:
+
+    Dale estilo al Header y al Footer para que sean visualmente atractivos y coherentes con tu paleta de colores.
+
+    Agregá una barra de navegación (<nav>) simple dentro del Header con enlaces de ejemplo (Ej: "Inicio", "Productos", "Contacto", "Carrito").
+
+⚙️Ejercicio práctico
+Obligatorio
+Crear el componente de producto:
+
+    Diseñá un componente reutilizable llamado TarjetaProducto.
+
+    Este componente debe ser capaz de mostrar la información esencial de un artículo: imagen, nombre y precio, pasados como props.
+
+⚙️Ejercicio práctico
+Obligatorio
+Aplicar estilos de forma modular:
+
+    Utilizá un archivo de CSS global (como index.css o App.css) para los estilos generales de la página (fuentes, colores de fondo, etc.).
+
+    Creá un archivo de CSS Modules (TarjetaProducto.module.css) para darle estilos específicos y encapsulados únicamente al componente TarjetaProducto.
+
+⚙️Ejercicio práctico
+Obligatorio
+¿Cómo ensamblar todo?
+
+    En App.jsx, utilizá tu componente Layout para envolver el contenido.
+
+    Mostrá al menos tres instancias del componente TarjetaProducto con información de ejemplo para simular un catálogo.
+
+Usa estilos para que la página sea atractiva y organizada. Considera aplicar flexbox o grid para el diseño de las secciones.
+⚙️Ejercicio práctico
+Obligatorio
+Este desafío pone a prueba tu capacidad para reutilizar componentes, manejar props y diseñar interfaces dinámicas.
+¡Sorpréndenos con tu solución y demuestra por qué TechLab es tu lugar ideal! 🚀
+
+Gamma
+
+Ejercicio - Clase 4 - React.JS
+⚙️Ejercicios prácticos
+Tu primer trabajo en TalentoLab
+¡Felicidades! Tras haber realizado los ejercicios prácticos, has sido seleccionado para unirte a TalentoLab.
+Serás parte del equipo responsable de crear un eCommerce para un cliente.
+⚙️Ejercicio práctico
+Obligatorio
+Descripción de tu tarea inicial:
+Tu tarea inicial será crear una funcionalidad básica para el manejo de un e-commerce. Comenzaremos con una actividad sencilla: Marcar productos como favoritos.
+⚙️Ejercicio práctico
+Obligatorio
+Requisitos del proyecto:
+¡Domina useState con favoritos! 💖
+El objetivo de este desafío es que pongas en práctica la gestión de estados con useState para implementar una función clave: marcar productos como favoritos. ¡Es tu oportunidad de brillar! ✨
+Interacción intuitiva de estrellas ⭐️
+Al lado del botón "Añadir producto", mostrarás una estrella. Un clic la "rellena" (cambia de apariencia) para indicar que es un favorito. ¡Otro clic y vuelve a su estado original!
+¡Fácil para el usuario, desafiante para ti! 💪
+Estado individual por producto 🎁
+¡Cada producto tiene su propia historia de favorito! Es crucial que cada uno maneje su estado de "favorito" de forma independiente. ¡Piensa en la personalización y la reactividad!
+⚙️Ejercicio práctico
+Obligatorio
+Pautas generales
+Generación del estado
+Crea el estado con su función y su variable.
+Actualización dinámica
+Genera la función marcarComoFavorito que cambie el valor actual de un booleano (que si está en True, al llamar a la función pase a False y viceversa)
+Asignación
+Asignale la función a una etiqueta en particular, en la posición seleccionada.
+📄¡Nuevo cuestionario en campus!
+No olvides que los cuestionarios son de carácter obligatorio para poder avanzar con la cursada.
+
+Ejercicio - Clase 4 - React.JS
+
+Ejercicio - Clase 5 - React.JS
+⚙️Ejercicios prácticos
+TalentoLab - proyecto final
+¡Felicitaciones nuevamente! 🎉 Ahora que has dominado la primera etapa de tu tarea en TalentoLab, el equipo ha decidido asignarte una responsabilidad más avanzada.
+⚙️Ejercicio práctico
+Obligatorio
+Silvia
+Product Owner
+Descripción de tu tarea:
+Vas a crear un directorio de contactos importantes simple. La aplicación va a cargar los datos de los creadores del sitio desde un archivo JSON local y los mostrará en pantalla, manejando de forma profesional los tiempos de carga y los posibles errores.
+⚙️Ejercicio práctico
+Obligatorio
+Requisitos del proyecto:
+1
+La fuente de datos - nuestro archivo JSON:
+
+    Dentro de la carpeta correspondiente creá un archivo nosotros.json.
+
+    Este archivo va a ser un array de objetos. Creá al menos 4 personas.. Cada usuario debe tener: id, nombre, email, puesto (ej: "CEO") y foto.
+
+    Guardá las fotos de perfil en la carpeta public/images. Recordá que la ruta en el JSON debe ser relativa a public (ej: /images/avatar1.png).
+
+2
+La lógica de carga - useEffect y useState:
+
+    En el componente principal de tu aplicación, definí los tres estados que ya conocés:
+
+    nosotros(inicializado como [])
+
+    cargando (inicializado como true)
+
+    error (inicializado como null)
+
+    Usá el hook useEffect para hacer la llamada fetch a tu archivo /data/nosotros.json.
+
+3
+La experiencia de usuario - renderizado condicional:
+
+    Tu aplicación debe ser informativa para el usuario en todo momento:
+
+    Si cargando es true, mostrá en pantalla un mensaje claro, como un "Cargando equipo...".
+
+    Si la llamada fetch falla y el estado error se actualiza, mostrá un mensaje de error visible.
+
+⚙️Ejercicio práctico
+Obligatorio
+Requisitos del proyecto:
+
+    La interfaz - mapeando los datos:
+
+    Una vez que los datos estén en tu estado usuarios, usá .map() para crear una "tarjeta de contacto" por cada persona.
+
+    Cada tarjeta debe mostrar la foto del usuario, su nombre, puesto y email.
+
+    Organizá las tarjetas en una grilla para que se vea prolijo y ordenado y agregalos al principio del footer
+
+Pautas y consejos
+
+    Estructura de componentes: Podés crear un componente Directorio que maneje la lógica del fetch y los estados. Y dentro de él, podés mapear y renderizar un componente TarjetaContacto para cada usuario, pasándole los datos por props.
+
+Estilos:
+¡Dale tu toque! Podés usar la página
+Bootswatch para buscar estilos o CSS puro o lo que te quede más cómodo para que las tarjetas de contacto se vean bien
+⚙️Ejercicio práctico
+Obligatorio
+Pautas generales del proyecto:
+Estructura
+Continuar con el proyecto de la clase anterior, agregando nueva funcionalidad.
+Componentes
+Mantener componentes organizados y reutilizables.
+Código limpio
+Evitar redundancias y organizar estados y efectos claramente.
+Diseño
+Usar Bootswatch o alternativa para mantener un diseño profesional.
+
+Gamma
+
+Ejercicio - Clase 6 - React.JS
+⚙️Ejercicios Prácticos
+TalentoLab - Proyecto Final
+
+    Ahora que ya podés subir los productos a la nube y optimizado creado el formulario de la gestión de tu eCommerce, el equipo de TalentoLab ha decidido asignarte una nueva responsabilidad.
+
+⚙️Ejercicio Práctico
+Obligatorio
+Silvia
+Product Owner
+Descripción de tu tarea:
+En este ejercicio, vas a mejorar la experiencia de usuario de tu aplicación eCommerce integrando un indicador de carga visual mientras se sube la imágen del producto. Esto previene que el usuario envíe el formulario varias veces y le informa que el proceso está en curso
+⚙️Ejercicio Práctico
+Obligatorio
+Requisitos:
+Añadir y gestionar el estado de carga en NewProductContainer.jsx
+1
+Crear el estado loading:
+Justo debajo de tus otros estados, agregá uno nuevo para controlar el estado de carga. Inicialízalo en false.
+2
+Activar el estado de carga: 
+Dentro de la función handleFormSubmit, la primera acción que debes realizar es cambiar el estado loading a true.
+3
+Desactivar el estado de carga: 
+Es crucial desactivar el estado de carga (setLoading(false)) cuando el proceso finaliza, ya sea con éxito o con un error. Asegúrate de añadirlo al final del bloque try y también en el bloque catch. Usar finally es una excelente práctica para este caso, ya que el código dentro de este bloque se ejecutará siempre, sin importar si el try tuvo éxito o si se produjo un catch.
+4
+Pasar el estado como prop: 
+Envía el estado loading al componente ProductForm a través de sus props.
+⚙️Ejercicio Práctico
+Obligatorio
+Requisitos:
+Utilizar el estado de carga en ProductForm.jsx
+1
+Recibir la prop:
+Desestructura la prop loading que ahora recibe el componente.
+2
+Modificar el botón de envío:
+Usa la prop loading para cambiar dinámicamente el texto y el estado del botón. Puedes hacerlo con un operador ternario. El botón debe estar deshabilitado (disabled) cuando loading sea true.
+⚙️Ejercicio Práctico
+Obligatorio
+Pautas Generales:
+
+    Estructura del proyecto: Continúa con el proyecto anterior. Agregá la funcionalidad en el componente que quieras
+
+    Componentes: Asegúrate de que los componentes creados sean reutilizables y que puedas
+
+📄¡Nuevo cuestionario en Campus!
+No olvides que los cuestionarios son de carácter obligatorio para poder avanzar con la cursada.
+
+Gamma
+
+Ejercicio - Clase 7 - React.JS
+⚙️Ejercicios prácticos
+Proyecto final
+Silvia
+Product Owner
+Descripción de tu tarea:
+¡Venís haciendo un excelente trabajo! Para aplicar los conceptos de esta clase, tu próxima tarea será implementar la página de inicio de tu proyecto utilizando rutas estáticas para lograr una navegación más fluida y profesional.
+⚙️Ejercicio práctico
+Obligatorio
+¡Desafío: implementando la página de inicio ( / )!
+Paso 1: componente base y diseño
+Crear el componente Inicio.jsx: Este será el nuevo componente para la página principal. ¡Céntrate en darle un diseño atractivo y moderno!
+Paso 2: mostrar productos destacados
+Incorporar una sección de "Productos destacados": Dentro de tu componente Inicio, deberás reutilizar la lógica para mostrar los productos que ya obtenías en clases anteriores.
+Paso 3: vista de detalle de producto
+Incorporar el detalle de cada producto: Al darle clic a cualquiera de los productos listados, el usuario debe ser redirigido para ver toda la información puntual y específica de ese producto.
+
+Gamma
+
+Ejercicio - Clase 8 - React.JS
+⚙️Ejercicios Prácticos
+Silvia
+Product Owner
+Descripción de tu tarea:
+¡Venís haciendo un excelente trabajo! Para aplicar los conceptos de esta clase, tu próxima tarea será implementar la página de inicio de tu proyecto utilizando rutas estáticas para lograr una navegación más fluida y profesional.
+⚙️Ejercicio Práctico
+Obligatorio
+🚀 Cargar productos con fetch en ItemListContainer
+Vamos a evolucionar nuestro listado de productos: ¡adiós datos hardcodeados, hola API simulada! 📡
+Refactorizaremos ItemListContainer.jsx para consumir datos de manera asíncrona desde un archivo local, simulando una llamada a una API real.
+🔧 Pasos a seguir:
+
+    📦 Estado inicial: Usa useState para crear un estado products como array vacío
+
+    ⚡ Carga automática: Implementa useEffect para hacer fetch a /productos.json al montar el componente
+
+    🔄 Actualización: En el .then() de la promesa, actualiza el estado products con los datos del JSON
+
+    🎨 Renderizado dinámico: Mapea el estado products para renderizar los componentes Item automáticamente
+
+Ejercicio - Clase 8 - React.JS
+
+

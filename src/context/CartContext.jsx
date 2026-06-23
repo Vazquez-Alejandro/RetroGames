@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNotify } from "./NotificationContext";
 import { db } from "../firebase/config";
-import { doc, updateDoc, getDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc, collection, getDocs } from "firebase/firestore";
 
 const CartContext = createContext();
 
@@ -18,6 +18,19 @@ export const CartProvider = ({ children }) => {
   const navigate = useNavigate();
   const { notify } = useNotify();
   const [cart, setCart] = useState([]);
+  const [coupon, setCoupon] = useState(null);
+
+  const applyCoupon = async (code) => {
+    const snapshot = await getDocs(collection(db, "cupones"));
+    const found = snapshot.docs
+      .map((d) => ({ id: d.id, ...d.data() }))
+      .find((c) => c.codigo === code.toUpperCase());
+    if (!found) return { error: "Código inválido" };
+    setCoupon(found);
+    return { ok: true, cupon: found };
+  };
+
+  const removeCoupon = () => setCoupon(null);
 
   const isInCart = (id) => {
     return cart.some((item) => item.id === id);
@@ -122,6 +135,12 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
+    const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    if (!coupon) return subtotal;
+    return subtotal - (subtotal * coupon.porcentaje) / 100;
+  };
+
+  const getSubtotal = () => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
@@ -133,6 +152,7 @@ export const CartProvider = ({ children }) => {
 
   const values = {
     cart,
+    coupon,
     addItem,
     removeItem,
     increaseQuantity,
@@ -140,8 +160,11 @@ export const CartProvider = ({ children }) => {
     getCantidadActual,
     getTotalItems,
     getCartTotal,
+    getSubtotal,
     clearCart,
     checkout,
+    applyCoupon,
+    removeCoupon,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
