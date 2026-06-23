@@ -345,4 +345,82 @@ Refactorizaremos ItemListContainer.jsx para consumir datos de manera asíncrona 
 
 Ejercicio - Clase 8 - React.JS
 
+REACT JS | Ejercicio 14
+✨Recordatorio
+Ruta de avance🛣️
+Este apartado detalla el progreso esperado del proyecto hasta el momento. Si en tu desarrollo actual notas que falta alguna funcionalidad o que hay áreas por mejorar, este es un buen momento para revisarlo y ajustarlo.
+Manejo del estado global
+
+    Carrito de Compras: Se creó CarritoContext.js para gestionar productos en el carrito, con funciones para agregar y vaciar. El carrito solo es accesible para usuarios autenticados mediante rutas protegidas.
+
+    Autenticación: AuthContext.js maneja el login/logout con firestore. Se implementó un formulario de inicio de sesión y redirección tras autenticación.
+
+Gestión de productos
+
+    Agregar Productos: Se desarrolló un formulario controlado con validaciones en tiempo real. Se implementó una solicitud POST para enviar datos a nuestra base de datos y manejar respuestas.
+
+Edición y eliminación de productos
+
+    Estado Global: ProductsProvider gestiona la lista de productos.
+
+    Edición: El formulario reutilizable diferencia entre agregar y editar, enviando una solicitud a Firestore
+
+    Eliminación: Se implementó una función con confirmación del usuario antes de ejecutar la solicitud DELETE.
+
+📌 Si aún no implementaste la edición o eliminación, asegúrate de agregar estas funcionalidades antes de seguir optimizando.
+⚙️Ejercicios Prácticos
+Nueva Tarea en Talento Lab
+El cliente de Talento Lab nos ha solicitado una mejora en la experiencia de navegación dentro de la aplicación. Además de optimizar la interfaz para dispositivos móviles y mejorar la usabilidad general, debemos agregar una funcionalidad de paginación en la vista de productos.
+⚙️Ejercicio práctico
+Obligatorio
+Para solucionar esto, vamos a aprovechar al máximo lo que estuviste aprendiendo esta clase para que nuestra aplicación termine responsive. ¡Manos a la obra con esta tarea que ya estamos cerca de terminarla!
+⚙️Ejercicio práctico
+Obligatorio
+Nuestros objetivos Clave:
+Enfoque mobile-First
+Asegurar una aplicación completamente responsiva en todos los dispositivos, priorizando la experiencia móvil.
+Mejoras UX/UI
+Implementar las mejores prácticas de diseño para una interfaz más accesible y fácil de usar.
+Interactividad avanzada
+Integrar React Icons para optimizar la navegación y proporcionar retroalimentación visual dinámica.
+Optimización SEO
+Utilizar React Helmet para asegurar que la aplicación sea fácilmente indexada por los motores de búsqueda.
+Preparación para despliegue
+Asegurar la compatibilidad con todos los dispositivos y optimizar los tiempos de carga.
+Paginación intuitiva
+Garantizar que la funcionalidad de paginación sea intuitiva y accesible para todos los usuarios.
+⚙️Ejercicio Práctico
+Obligatorio
+Requisitos del Proyecto:
+Optimización responsiva con Bootstrap y Styled-components:
+
+    Utiliza el sistema de grillas de Bootstrap para organizar los componentes de manera responsiva, adaptando la distribución de los productos y otros elementos a diferentes tamaños de pantalla (móviles, tablets, escritorios).
+
+    Aplica styled-components para crear un diseño personalizado y modular, mejorando la claridad y mantenibilidad del código.
+
+Interactividad mejorada con React Icons
+
+    Instala React Icons y agrega iconos en los botones de acción, como en la barra de navegación (por ejemplo, el icono de carrito en el botón de compra).
+
+⚙️Ejercicio Práctico
+Obligatorio
+Requisitos del Proyecto:
+Mejora de la accesibilidad y SEO:
+
+    Utiliza etiquetas ARIA en botones y enlaces para mejorar la accesibilidad.
+
+    Usa React Helmet para modificar las etiquetas <title> y <meta>, mejorando el SEO de la aplicación y asegurando que sea fácilmente indexada por los motores de búsqueda.
+
+Pruebas y preparación para el despliegue final:
+
+    Realiza pruebas en diferentes dispositivos para garantizar la compatibilidad.
+
+    Revisa que todos los elementos de la interfaz se comporten correctamente en pantallas pequeñas y grandes, asegurando tiempos de carga rápidos y una experiencia de usuario fluida.
+
+Paginación en ProductosNacionales.jsx:
+
+    Implementa una paginación funcional para mostrar los productos en páginas separadas.
+
+Gamma
+
 

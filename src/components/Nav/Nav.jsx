@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
@@ -7,14 +8,29 @@ export const Nav = () => {
   const { getTotalItems } = useCart();
   const { user } = useAuth();
   const totalItems = getTotalItems();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <nav>
-      <ul className={styles.navList}>
+    <nav className={styles.nav} role="navigation" aria-label="Navegación principal">
+      <button
+        className={styles.hamburger}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={menuOpen}
+      >
+        <span className={`${styles.bar} ${menuOpen ? styles.barOpen : ""}`} />
+        <span className={`${styles.bar} ${menuOpen ? styles.barOpen : ""}`} />
+        <span className={`${styles.bar} ${menuOpen ? styles.barOpen : ""}`} />
+      </button>
+      <ul className={`${styles.navList} ${menuOpen ? styles.navListOpen : ""}`}>
         <li className={styles.navItem}>
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? styles.active : "")}
+            onClick={closeMenu}
+            aria-label="Ir al inicio"
           >
             Inicio
           </NavLink>
@@ -23,6 +39,8 @@ export const Nav = () => {
           <NavLink
             to="/productos"
             className={({ isActive }) => (isActive ? styles.active : "")}
+            onClick={closeMenu}
+            aria-label="Ver productos"
           >
             Productos
           </NavLink>
@@ -33,10 +51,12 @@ export const Nav = () => {
             className={({ isActive }) =>
               `${styles.cartLink}${isActive ? ` ${styles.active}` : ""}`
             }
+            onClick={closeMenu}
+            aria-label={`Carrito de compras${totalItems > 0 ? `, ${totalItems} artículos` : ""}`}
           >
             Carrito
             {totalItems > 0 && (
-              <span className={styles.cartBadge}>{totalItems}</span>
+              <span className={styles.cartBadge} aria-label={`${totalItems} artículos`}>{totalItems}</span>
             )}
           </NavLink>
         </li>
@@ -46,6 +66,8 @@ export const Nav = () => {
               <NavLink
                 to="/admin/productos"
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                onClick={closeMenu}
+                aria-label="Administrar productos"
               >
                 Admin
               </NavLink>
@@ -54,6 +76,8 @@ export const Nav = () => {
               <NavLink
                 to="/admin/cupones"
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                onClick={closeMenu}
+                aria-label="Administrar cupones"
               >
                 Cupones
               </NavLink>
@@ -67,6 +91,8 @@ export const Nav = () => {
               <NavLink
                 to="/perfil"
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                onClick={closeMenu}
+                aria-label="Ir a mi perfil"
               >
                 Perfil
               </NavLink>
@@ -75,6 +101,8 @@ export const Nav = () => {
             <NavLink
               to="/login"
               className={({ isActive }) => (isActive ? styles.active : "")}
+              onClick={closeMenu}
+              aria-label="Iniciar sesión"
             >
               Ingresar
             </NavLink>

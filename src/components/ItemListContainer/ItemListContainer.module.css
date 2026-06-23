@@ -124,3 +124,64 @@
   object-fit: contain;
   image-rendering: pixelated;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.pageBtn {
+  font-family: "Press Start 2P", system-ui, monospace;
+  font-size: 10px;
+  padding: 10px 16px;
+  border: 2px solid var(--text-dim);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.pageBtn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 3px 3px 0 var(--accent);
+  transform: translate(-2px, -2px);
+}
+
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg-dark);
+}
+
+@media (max-width: 768px) {
+  .pageBtn {
+    font-size: 8px;
+    padding: 8px 12px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filterBtn {
+    width: 100px;
+    height: 100px;
+  }
+
+  .filterImg {
+    max-width: 80%;
+    max-height: 80%;
+  }
+}

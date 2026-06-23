@@ -11,6 +11,8 @@ export const ItemListContainer = () => {
   const [error, setError] = useState(null);
   const [category, setCategory] = useState("juegos");
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
 
   const categories = [
     { key: "juegos", label: "Juegos", img: "/images/juegos.png" },
@@ -27,6 +29,12 @@ export const ItemListContainer = () => {
         p.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : filteredProducts;
+
+  const totalPages = Math.max(1, Math.ceil(searchedProducts.length / itemsPerPage));
+  const paginatedProducts = searchedProducts.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -45,6 +53,10 @@ export const ItemListContainer = () => {
     };
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    setPage(1);
+  }, [category, searchTerm]);
 
   if (loading) {
     return (
@@ -86,7 +98,38 @@ export const ItemListContainer = () => {
           </button>
         ))}
       </div>
-      <ItemList products={searchedProducts} />
+      <ItemList products={paginatedProducts} />
+      {totalPages > 1 && (
+        <div className={styles.pagination}>
+          <button
+            className={styles.pageBtn}
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={page === 1}
+            aria-label="Página anterior"
+          >
+            &lt;
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+            <button
+              key={n}
+              className={`${styles.pageBtn} ${page === n ? styles.pageBtnActive : ""}`}
+              onClick={() => setPage(n)}
+              aria-label={`Ir a página ${n}`}
+              aria-current={page === n ? "page" : undefined}
+            >
+              {n}
+            </button>
+          ))}
+          <button
+            className={styles.pageBtn}
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={page === totalPages}
+            aria-label="Página siguiente"
+          >
+            &gt;
+          </button>
+        </div>
+      )}
     </div>
   );
 };

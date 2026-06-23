@@ -87,3 +87,80 @@
   border-radius: 0;
   line-height: 1;
 }
+
+.nav {
+  position: relative;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  background: none;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  margin: 8px auto;
+}
+
+.hamburger:hover {
+  background: none;
+  box-shadow: none;
+}
+
+.bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--accent);
+  transition: all 0.3s;
+}
+
+.barOpen:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.barOpen:nth-child(2) {
+  opacity: 0;
+}
+
+.barOpen:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navList {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .navListOpen {
+    display: flex;
+  }
+
+  .navItem {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navItem a {
+    padding: 12px 16px;
+  }
+
+  .userEmail {
+    font-size: 8px;
+    max-width: 100%;
+    text-align: center;
+  }
+}

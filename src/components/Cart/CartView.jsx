@@ -63,7 +63,7 @@ export const CartView = () => {
             {msg && <p className={msg.includes("inválido") ? styles.couponError : styles.couponSuccess}>{msg}</p>}
           </div>
           <div className={styles.actions}>
-            <button className={styles.confirmBtn} onClick={handleConfirm}>
+            <button className={styles.confirmBtn} onClick={handleConfirm} aria-label="Confirmar cambios en el carrito">
               Confirmar cambios
             </button>
           </div>

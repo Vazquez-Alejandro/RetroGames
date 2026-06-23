@@ -19,11 +19,12 @@ export const Count = ({ count, increment, decrement }) => {
         className={styles.btn}
         onClick={handleDecrement}
         disabled={count === 0}
+        aria-label="Disminuir cantidad"
       >
         -
       </button>
-      <span className={styles.quantity}>{count}</span>
-      <button className={styles.btn} onClick={handleIncrement}>
+      <span className={styles.quantity} aria-live="polite" aria-label={`Cantidad: ${count}`}>{count}</span>
+      <button className={styles.btn} onClick={handleIncrement} aria-label="Aumentar cantidad">
         +
       </button>
     </div>

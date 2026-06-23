@@ -175,6 +175,38 @@ body::after {
   z-index: 9999;
 }
 
+@media (max-width: 768px) {
+  #root {
+    border-inline: none;
+    animation: none;
+    box-shadow: none;
+  }
+
+  main {
+    padding: 16px 8px;
+  }
+
+  h1 { font-size: 14px; margin: 16px 0; }
+  h2 { font-size: 11px; margin: 12px 0 8px; }
+  h3 { font-size: 9px; }
+  p { font-size: 8px; }
+
+  button {
+    font-size: 8px;
+    padding: 10px 16px;
+  }
+
+  input, select, textarea {
+    font-size: 8px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 11px; }
+  h2 { font-size: 9px; }
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
