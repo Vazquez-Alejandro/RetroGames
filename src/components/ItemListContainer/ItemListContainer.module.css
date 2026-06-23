@@ -19,20 +19,32 @@
 }
 
 .spinner {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  border: 4px solid var(--text-dim);
-  border-top-color: var(--secondary);
-  border-right-color: var(--accent);
-  border-bottom-color: var(--success);
-  border-left-color: var(--warning);
-  animation: spin 0.8s steps(8) infinite;
+  display: inline-flex;
+  gap: 6px;
+  padding: 16px;
   margin-bottom: 16px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.spinner span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: var(--success);
+  image-rendering: pixelated;
+}
+
+.spinner span:nth-child(1) { animation: loadBlock 1.2s steps(1) infinite; }
+.spinner span:nth-child(2) { animation: loadBlock 1.2s steps(1) 0.15s infinite; }
+.spinner span:nth-child(3) { animation: loadBlock 1.2s steps(1) 0.3s infinite; }
+.spinner span:nth-child(4) { animation: loadBlock 1.2s steps(1) 0.45s infinite; }
+.spinner span:nth-child(5) { animation: loadBlock 1.2s steps(1) 0.6s infinite; }
+.spinner span:nth-child(6) { animation: loadBlock 1.2s steps(1) 0.75s infinite; }
+.spinner span:nth-child(7) { animation: loadBlock 1.2s steps(1) 0.9s infinite; }
+.spinner span:nth-child(8) { animation: loadBlock 1.2s steps(1) 1.05s infinite; }
+
+@keyframes loadBlock {
+  0%, 100% { opacity: 0.15; box-shadow: none; }
+  50% { opacity: 1; box-shadow: 0 0 8px var(--success); }
 }
 
 .error {

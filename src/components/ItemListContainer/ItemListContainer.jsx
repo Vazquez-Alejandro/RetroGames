@@ -61,8 +61,11 @@ export const ItemListContainer = () => {
   if (loading) {
     return (
       <div className={styles.loading}>
-        <div className={styles.spinner} />
-        <p>Cargando productos...</p>
+        <div className={styles.spinner}>
+          <span /><span /><span /><span />
+          <span /><span /><span /><span />
+        </div>
+        <p>CARGANDO...</p>
       </div>
     );
   }
