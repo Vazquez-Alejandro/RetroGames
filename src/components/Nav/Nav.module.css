@@ -82,10 +82,19 @@
 .cartBadge {
   background: var(--accent);
   color: var(--bg-dark);
-  font-size: 8px;
-  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
   border-radius: 0;
   line-height: 1;
+  animation: badgePulse 0.3s ease-out;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.6);
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1.4); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
 }
 
 .nav {

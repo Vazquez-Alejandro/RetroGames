@@ -55,8 +55,8 @@ export const Item = ({ id, name, description, price, image, children, stock }) =
         <>
           <Count count={count} increment={increment} decrement={decrement} />
           <div className={styles.actions}>
-            <button className={styles.addBtn} onClick={handleAddToCart} disabled={sinStock} aria-label={sinStock ? "Producto sin stock" : `Agregar ${name} al carrito`}>
-              {sinStock ? "Sin stock" : "Agregar al carrito"}
+            <button className={styles.addBtn} onClick={handleAddToCart} disabled={count === 0 || sinStock} aria-label={sinStock ? "Producto sin stock" : count === 0 ? "Seleccioná una cantidad primero" : `Agregar ${name} al carrito`}>
+              {sinStock ? "Sin stock" : count === 0 ? "Elegí cantidad +" : "Agregar al carrito"}
             </button>
             <span className={styles.favoriteBtn} onClick={handleFavorite} role="button" aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"} tabIndex={0}>
               {isFavorite ? "⭐" : "☆"}

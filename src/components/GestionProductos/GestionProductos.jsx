@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaEdit, FaTrash, FaSave, FaTimes } from "react-icons/fa";
 import { db } from "../../firebase/config";
 import {
@@ -26,6 +26,8 @@ const categories = [
   { key: "accesorios", label: "Accesorios" },
 ];
 
+const IMGBB_KEY = import.meta.env.VITE_IMGBB_KEY || "";
+
 export const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
   const [form, setForm] = useState(initialForm);
@@ -33,6 +35,8 @@ export const GestionProductos = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "productos"), (snapshot) => {
@@ -117,6 +121,44 @@ export const GestionProductos = () => {
 
   const cancelarEdicion = () => {
     setProductoAEditar(null);
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!IMGBB_KEY) {
+      setError("No hay clave de imgbb configurada. Creá un archivo .env con VITE_IMGBB_KEY=tu_api_key o ingresá la URL manualmente.");
+      return;
+    }
+
+    setUploading(true);
+    setError("");
+
+    try {
+      const formData = new FormData();
+      formData.append("key", IMGBB_KEY);
+      formData.append("image", file);
+
+      const res = await fetch("https://api.imgbb.com/1/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setForm((prev) => ({ ...prev, image: data.data.url }));
+        setSuccess("Imagen subida correctamente");
+      } else {
+        setError("Error al subir imagen: " + (data.error?.message || "desconocido"));
+      }
+    } catch (err) {
+      setError("Error de conexión al subir imagen: " + err.message);
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
   };
 
   const confirmDelete = async () => {
@@ -204,20 +246,37 @@ export const GestionProductos = () => {
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label}>URL de imagen</label>
+          <label className={styles.label}>Imagen</label>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleImageUpload}
+            className={styles.input}
+            disabled={uploading}
+          />
+          {uploading && <p className={styles.uploadMsg}>Subiendo imagen...</p>}
+          {!IMGBB_KEY && (
+            <p className={styles.uploadMsg} style={{ color: "#ffcc00" }}>
+              Sin clave imgbb. Creá .env con VITE_IMGBB_KEY o ingresá URL manualmente.
+            </p>
+          )}
+          <label className={styles.label} style={{ marginTop: "0.5rem" }}>
+            O ingresá URL manual
+          </label>
           <input
             className={styles.input}
             type="text"
             name="image"
             value={form.image}
             onChange={handleChange}
-            placeholder="/images/producto.png"
+            placeholder="https://ejemplo.com/imagen.png"
           />
         </div>
 
-        {productoAEditar && form.image && (
+        {form.image && (
           <div className={styles.preview}>
-            <p className={styles.previewLabel}>Imagen actual:</p>
+            <p className={styles.previewLabel}>Vista previa:</p>
             <img src={form.image} alt="preview" className={styles.previewImg} />
           </div>
         )}

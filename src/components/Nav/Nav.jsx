@@ -56,7 +56,7 @@ export const Nav = () => {
           >
             Carrito
             {totalItems > 0 && (
-              <span className={styles.cartBadge} aria-label={`${totalItems} artículos`}>{totalItems}</span>
+              <span key={totalItems} className={styles.cartBadge} aria-label={`${totalItems} artículos`}>{totalItems}</span>
             )}
           </NavLink>
         </li>

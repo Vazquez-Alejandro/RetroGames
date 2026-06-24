@@ -32,7 +32,11 @@ function App() {
             />
             <Route path="/product/:id" element={<ItemDetailContainer />} />
             <Route path="/carrito" element={<CartView />} />
-            <Route path="/admin/cupones" element={<GestionCupones />} />
+            <Route path="/admin/cupones" element={
+              <ProtectedRoute rolesPermitidos={["admin"]}>
+                <GestionCupones />
+              </ProtectedRoute>
+            } />
             <Route path="/admin/productos" element={
               <ProtectedRoute rolesPermitidos={["admin"]}>
                 <GestionProductos />

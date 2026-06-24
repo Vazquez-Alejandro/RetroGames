@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useNotify } from "../../context/NotificationContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 import styles from "./Login.module.css";
 
 export function Login() {
@@ -8,14 +11,19 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
+  const { notify } = useNotify();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      await login(email, password);
-      navigate("/");
+      const userCred = await login(email, password);
+      const userDocRef = doc(db, "usuarios", userCred.user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+      const rol = userDocSnap.exists() && userDocSnap.data().rol === "admin" ? "admin" : "user";
+      notify(`¡Bienvenido ${email}!`);
+      navigate(rol === "admin" ? "/admin/productos" : "/");
     } catch (err) {
       setError(err.message);
     }
